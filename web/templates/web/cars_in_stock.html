@@ -1,0 +1,83 @@
+{% extends 'web/base.html' %}
+{% load static humanize %}
+
+{% block content %}
+<main class="pt-32 pb-24 bg-slate-50">
+    <div class="max-w-7xl mx-auto px-4">
+        <div class="mb-12">
+            <h1 class="text-4xl font-bold text-slate-900 mb-4">Cars in Stock</h1>
+            <p class="text-slate-600">Browse our extensive inventory of quality vehicles.</p>
+        </div>
+
+        <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+            {% for car in cars %}
+            <div>
+                <div
+                    class="rounded-xl text-card-foreground group overflow-hidden border-0 shadow-sm hover:shadow-xl transition-all duration-500 bg-white">
+                    <div class="relative overflow-hidden aspect-[4/3]">
+                        {% if car.image %}
+                        <img src="{{ car.image.url }}" alt="{{ car.title }}"
+                            class="object-cover w-full h-full transition-transform duration-700 group-hover:scale-110">
+                        {% else %}
+                        <div class="w-full h-full bg-slate-200 flex items-center justify-center text-slate-400">No Image
+                        </div>
+                        {% endif %}
+                        <div
+                            class="absolute top-4 right-4 bg-white/90 backdrop-blur-sm px-3 py-1 rounded-full text-xs font-semibold text-slate-900 uppercase tracking-wider">
+                            {{ car.condition }}
+                        </div>
+                    </div>
+                    <div class="p-6">
+                        <h3
+                            class="font-semibold text-lg mb-2 text-slate-900 group-hover:text-red-600 transition-colors">
+                            {{ car.title }}</h3>
+                        <div class="flex items-center gap-4 text-sm text-slate-500 mb-4">
+                            <div class="flex items-center gap-1">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24"
+                                    fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                                    stroke-linejoin="round" class="lucide lucide-calendar">
+                                    <rect width="18" height="18" x="3" y="4" rx="2" ry="2"></rect>
+                                    <line x1="16" x2="16" y1="2" y2="6"></line>
+                                    <line x1="8" x2="8" y1="2" y2="6"></line>
+                                    <line x1="3" x2="21" y1="10" y2="10"></line>
+                                </svg>
+                                <span>{{ car.year }}</span>
+                            </div>
+                            <div class="flex items-center gap-1">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24"
+                                    fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                                    stroke-linejoin="round" class="lucide lucide-gauge">
+                                    <path d="m12 14 4-4"></path>
+                                    <path d="M3.34 19a10 10 0 1 1 17.32 0"></path>
+                                </svg>
+                                <span>{{ car.mileage }}</span>
+                            </div>
+                            <div class="flex items-center gap-1">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24"
+                                    fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                                    stroke-linejoin="round" class="lucide lucide-fuel">
+                                    <line x1="3" x2="15" y1="22" y2="22"></line>
+                                    <line x1="4" x2="14" y1="9" y2="9"></line>
+                                    <path d="M14 22V4a2 2 0 0 0-2-2H6a2 2 0 0 0-2 2v18"></path>
+                                    <path
+                                        d="M14 13h2a2 2 0 0 1 2 2v2a2 2 0 0 0 2 2h0a2 2 0 0 0 2-2V9.83a2 2 0 0 0-.59-1.42L18 5">
+                                    </path>
+                                </svg>
+                                <span>{{ car.fuel_type }}</span>
+                            </div>
+                        </div>
+                        <div class="mb-4">
+                            <span class="text-2xl font-bold text-slate-900">${{ car.price|floatformat:0|intcomma }}</span>
+                        </div>
+                        <a href="{% url 'car_detail' car.pk %}"
+                            class="inline-flex items-center justify-center gap-2 whitespace-nowrap rounded-md text-sm font-medium h-9 px-4 py-2 w-full group/btn hover:bg-slate-900 hover:text-white transition-all duration-300 bg-slate-100 text-slate-900">
+                            View Details
+                        </a>
+                    </div>
+                </div>
+            </div>
+            {% endfor %}
+        </div>
+    </div>
+</main>
+{% endblock %}

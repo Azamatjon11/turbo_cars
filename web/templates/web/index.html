@@ -1,0 +1,296 @@
+{% extends 'web/base.html' %}
+{% load static humanize %}
+
+{% block content %}
+<main>
+  <div class="min-h-screen">
+    <div class="relative min-h-[90vh] overflow-hidden bg-slate-950">
+      <div class="absolute inset-0 bg-cover bg-center opacity-40"
+        style="background-image: url(&quot;https://images.unsplash.com/photo-1503376780353-7e6692767b70?w=1920&quot;);">
+      </div>
+      <div class="absolute inset-0 bg-gradient-to-r from-slate-950 via-slate-950/80 to-transparent"></div>
+      <div class="absolute top-20 right-20 w-96 h-96 bg-red-500/20 rounded-full blur-3xl"></div>
+      <div class="absolute bottom-20 left-20 w-64 h-64 bg-red-500/10 rounded-full blur-3xl"></div>
+      <div class="relative max-w-7xl mx-auto px-4 pt-32 pb-20">
+        <div class="grid lg:grid-cols-2 gap-12 items-center">
+          <div style="opacity: 1; transform: none;">
+            <div class="inline-flex items-center gap-2 bg-white/10 backdrop-blur-sm rounded-full px-4 py-2 mb-8">
+              <span class="w-2 h-2 bg-red-500 rounded-full animate-pulse"></span><span
+                class="text-sm text-slate-300">Trusted by 10,000+ customers worldwide</span>
+            </div>
+            <h1 class="text-5xl md:text-7xl font-bold text-white leading-tight mb-6">Find Your<span
+                class="block text-transparent bg-clip-text bg-gradient-to-r from-red-500 to-red-700">Dream
+                Car</span></h1>
+            <p class="text-xl text-slate-400 mb-10 max-w-lg">Premium selection of quality vehicles. From everyday
+              rides to luxury imports, we have the perfect car waiting for you.</p>
+            <div class="flex flex-col sm:flex-row gap-4"><a href="/CarsInStock"><button
+                  class="inline-flex items-center justify-center gap-2 whitespace-nowrap text-sm transition-colors focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-ring disabled:pointer-events-none disabled:opacity-50 [&amp;_svg]:pointer-events-none [&amp;_svg]:size-4 [&amp;_svg]:shrink-0 shadow bg-red-600 hover:bg-red-700 text-white font-semibold px-8 h-14 rounded-xl">Browse
+                  Inventory<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"
+                    fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
+                    class="lucide lucide-arrow-right ml-2 w-5 h-5">
+                    <path d="M5 12h14"></path>
+                    <path d="m12 5 7 7-7 7"></path>
+                  </svg></button></a><a href="/CarAuctions"><button
+                  class="inline-flex items-center justify-center gap-2 whitespace-nowrap text-sm font-medium transition-colors focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-ring disabled:pointer-events-none disabled:opacity-50 [&amp;_svg]:pointer-events-none [&amp;_svg]:size-4 [&amp;_svg]:shrink-0 border bg-slate-950 shadow-sm hover:text-accent-foreground border-slate-700 text-white hover:bg-slate-800 h-14 rounded-xl px-8"><svg
+                    xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none"
+                    stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
+                    class="lucide lucide-play mr-2 w-5 h-5">
+                    <polygon points="6 3 20 12 6 21 6 3"></polygon>
+                  </svg>View Auctions</button></a></div>
+            <div class="grid grid-cols-3 gap-8 mt-16 pt-8 border-t border-slate-800">
+              <div>
+                <div class="text-3xl font-bold text-white">500+</div>
+                <div class="text-slate-500">Cars in Stock</div>
+              </div>
+              <div>
+                <div class="text-3xl font-bold text-white">98%</div>
+                <div class="text-slate-500">Happy Clients</div>
+              </div>
+              <div>
+                <div class="text-3xl font-bold text-white">15+</div>
+                <div class="text-slate-500">Years Experience</div>
+              </div>
+            </div>
+          </div>
+          <div class="hidden lg:block" style="opacity: 1; transform: none;">
+            <div class="relative">
+              <div class="absolute -inset-4 bg-gradient-to-r from-red-500/20 to-red-700/20 rounded-3xl blur-2xl">
+              </div><img src="https://images.unsplash.com/photo-1555215695-3004980ad54e?w=800&q=80" alt="Luxury Car"
+                class="relative rounded-3xl shadow-2xl">
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <section class="py-24 bg-slate-50">
+      <div class="max-w-7xl mx-auto px-4">
+        <div class="flex flex-col md:flex-row md:items-end md:justify-between mb-12">
+          <div><span class="text-red-600 font-semibold text-sm tracking-wider uppercase">Featured Vehicles</span>
+            <h2 class="text-4xl md:text-5xl font-bold text-slate-900 mt-2">Cars in Stock</h2>
+          </div><a href="/CarsInStock"><button
+              class="inline-flex items-center justify-center gap-2 whitespace-nowrap rounded-md text-sm font-medium transition-colors focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-ring disabled:pointer-events-none disabled:opacity-50 [&amp;_svg]:pointer-events-none [&amp;_svg]:size-4 [&amp;_svg]:shrink-0 hover:bg-accent h-9 px-4 py-2 mt-4 md:mt-0 text-slate-600 hover:text-slate-900">View
+              All Cars<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none"
+                stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
+                class="lucide lucide-arrow-right ml-2 w-4 h-4">
+                <path d="M5 12h14"></path>
+                <path d="m12 5 7 7-7 7"></path>
+              </svg></button></a>
+        </div>
+        <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+          {% for car in cars %}
+          <div>
+            <div
+              class="rounded-xl text-card-foreground group overflow-hidden border-0 shadow-sm hover:shadow-xl transition-all duration-500 bg-white">
+              <div class="relative overflow-hidden aspect-[4/3]">
+                {% if car.image %}
+                <img src="{{ car.image.url }}" alt="{{ car.title }}"
+                  class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700">
+                {% else %}
+                <div class="w-full h-full bg-slate-200 flex items-center justify-center text-slate-400">No Image</div>
+                {% endif %}
+                <div class="absolute top-4 left-4 flex gap-2">
+                  <div
+                    class="inline-flex items-center rounded-md text-xs font-semibold transition-colors focus:outline-none focus:ring-2 focus:ring-ring focus:ring-offset-2 border-transparent shadow hover:bg-primary/80 {% if car.condition == 'Damaged' %}bg-orange-500{% else %}bg-emerald-500{% endif %} text-white border-0 px-3 py-1">
+                    {{ car.condition }}</div>
+                </div>
+              </div>
+              <div class="p-6">
+                <div class="flex justify-between items-start mb-3">
+                  <h3 class="font-semibold text-lg text-slate-900 line-clamp-1">{{ car.title }}</h3><span
+                    class="text-xs text-slate-500">{{ car.year }}</span>
+                </div>
+                <div class="flex items-center gap-4 text-sm text-slate-500 mb-4">
+                  <div class="flex items-center gap-1.5"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24"
+                      viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                      stroke-linejoin="round" class="lucide lucide-gauge w-4 h-4">
+                      <path d="m12 14 4-4"></path>
+                      <path d="M3.34 19a10 10 0 1 1 17.32 0"></path>
+                    </svg><span>{{ car.mileage }}</span></div>
+                  <div class="flex items-center gap-1.5"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24"
+                      viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                      stroke-linejoin="round" class="lucide lucide-fuel w-4 h-4">
+                      <line x1="3" x2="15" y1="22" y2="22"></line>
+                      <line x1="4" x2="14" y1="9" y2="9"></line>
+                      <path d="M14 22V4a2 2 0 0 0-2-2H6a2 2 0 0 0-2 2v18"></path>
+                      <path d="M14 13h2a2 2 0 0 1 2 2v2a2 2 0 0 0 2 2a2 2 0 0 0 2-2V9.83a2 2 0 0 0-.59-1.42L18 5">
+                      </path>
+                    </svg><span>{{ car.fuel_type }}</span></div>
+                </div>
+                <div class="mb-4">
+                  <span class="text-2xl font-bold text-slate-900">${{ car.price|floatformat:0|intcomma }}</span>
+                </div>
+                <a href="{% url 'car_detail' car.pk %}"
+                  class="inline-flex items-center justify-center gap-2 whitespace-nowrap rounded-md text-sm font-medium focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-ring disabled:pointer-events-none disabled:opacity-50 [&amp;_svg]:pointer-events-none [&amp;_svg]:size-4 [&amp;_svg]:shrink-0 h-9 px-4 py-2 w-full group/btn hover:bg-slate-900 hover:text-white transition-all duration-300">View
+                  Details<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none"
+                    stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
+                    class="lucide lucide-arrow-right w-4 h-4 ml-2 group-hover/btn:translate-x-1 transition-transform">
+                    <path d="M5 12h14"></path>
+                    <path d="m12 5 7 7-7 7"></path>
+                  </svg></a>
+              </div>
+            </div>
+          </div>
+          {% endfor %}
+        </div>
+      </div>
+    </section>
+    <section class="py-24 bg-white">
+      <div class="max-w-7xl mx-auto px-4">
+        <div class="text-center mb-16"><span class="text-red-600 font-semibold text-sm tracking-wider uppercase">Why
+            Choose Us</span>
+          <h2 class="text-4xl md:text-5xl font-bold text-slate-900 mt-2">Premium Services</h2>
+        </div>
+        <div class="grid md:grid-cols-2 lg:grid-cols-4 gap-8">
+          <div class="group p-8 rounded-2xl bg-slate-50 hover:bg-slate-900 transition-all duration-500">
+            <div
+              class="w-14 h-14 rounded-xl bg-red-500/10 group-hover:bg-red-600 flex items-center justify-center mb-6 transition-all duration-500">
+              <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none"
+                stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
+                class="lucide lucide-truck w-7 h-7 text-red-600 group-hover:text-white transition-colors">
+                <path d="M14 18V6a2 2 0 0 0-2-2H4a2 2 0 0 0-2 2v11a1 1 0 0 0 1 1h2"></path>
+                <path d="M15 18H9"></path>
+                <path d="M19 18h2a1 1 0 0 0 1-1v-3.65a1 1 0 0 0-.22-.624l-3.48-4.35A1 1 0 0 0 17.52 8H14"></path>
+                <circle cx="17" cy="18" r="2"></circle>
+                <circle cx="7" cy="18" r="2"></circle>
+              </svg>
+            </div>
+            <h3 class="text-xl font-semibold text-slate-900 group-hover:text-white mb-3 transition-colors">
+              Worldwide Shipping</h3>
+            <p class="text-slate-600 group-hover:text-slate-400 transition-colors">We deliver vehicles to any
+              location globally with full insurance coverage.</p>
+          </div>
+          <div class="group p-8 rounded-2xl bg-slate-50 hover:bg-slate-900 transition-all duration-500">
+            <div
+              class="w-14 h-14 rounded-xl bg-red-500/10 group-hover:bg-red-600 flex items-center justify-center mb-6 transition-all duration-500">
+              <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none"
+                stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
+                class="lucide lucide-shield w-7 h-7 text-red-600 group-hover:text-white transition-colors">
+                <path
+                  d="M20 13c0 5-3.5 7.5-7.66 8.95a1 1 0 0 1-.67-.01C7.5 20.5 4 18 4 13V6a1 1 0 0 1 1-1c2 0 4.5-1.2 6.24-2.72a1.17 1.17 0 0 1 1.52 0C14.51 3.81 17 5 19 5a1 1 0 0 1 1 1z">
+                </path>
+              </svg>
+            </div>
+            <h3 class="text-xl font-semibold text-slate-900 group-hover:text-white mb-3 transition-colors">Quality
+              Guaranteed</h3>
+            <p class="text-slate-600 group-hover:text-slate-400 transition-colors">Every vehicle undergoes
+              thorough inspection before being listed.</p>
+          </div>
+          <div class="group p-8 rounded-2xl bg-slate-50 hover:bg-slate-900 transition-all duration-500">
+            <div
+              class="w-14 h-14 rounded-xl bg-red-500/10 group-hover:bg-red-600 flex items-center justify-center mb-6 transition-all duration-500">
+              <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none"
+                stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
+                class="lucide lucide-credit-card w-7 h-7 text-red-600 group-hover:text-white transition-colors">
+                <rect width="20" height="14" x="2" y="5" rx="2"></rect>
+                <line x1="2" x2="22" y1="10" y2="10"></line>
+              </svg>
+            </div>
+            <h3 class="text-xl font-semibold text-slate-900 group-hover:text-white mb-3 transition-colors">
+              Flexible Financing</h3>
+            <p class="text-slate-600 group-hover:text-slate-400 transition-colors">Easy payment plans and
+              financing options available for all budgets.</p>
+          </div>
+          <div class="group p-8 rounded-2xl bg-slate-50 hover:bg-slate-900 transition-all duration-500">
+            <div
+              class="w-14 h-14 rounded-xl bg-red-500/10 group-hover:bg-red-600 flex items-center justify-center mb-6 transition-all duration-500">
+              <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none"
+                stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
+                class="lucide lucide-headphones w-7 h-7 text-red-600 group-hover:text-white transition-colors">
+                <path
+                  d="M3 14h3a2 2 0 0 1 2 2v3a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-7a9 9 0 0 1 18 0v7a2 2 0 0 1-2 2h-1a2 2 0 0 1-2-2v-3a2 2 0 0 1 2-2h3">
+                </path>
+              </svg>
+            </div>
+            <h3 class="text-xl font-semibold text-slate-900 group-hover:text-white mb-3 transition-colors">24/7
+              Support</h3>
+            <p class="text-slate-600 group-hover:text-slate-400 transition-colors">Our team is always available to
+              assist you with any questions.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+    <section class="py-24 bg-slate-50">
+      <div class="max-w-7xl mx-auto px-4">
+        <div class="flex flex-col md:flex-row md:items-end md:justify-between mb-12">
+          <div><span class="text-red-600 font-semibold text-sm tracking-wider uppercase">Testimonials</span>
+            <h2 class="text-4xl md:text-5xl font-bold text-slate-900 mt-2">What Our Customers Say</h2>
+          </div><a href="/Reviews"><button
+              class="inline-flex items-center justify-center gap-2 whitespace-nowrap rounded-md text-sm font-medium transition-colors focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-ring disabled:pointer-events-none disabled:opacity-50 [&amp;_svg]:pointer-events-none [&amp;_svg]:size-4 [&amp;_svg]:shrink-0 hover:bg-accent h-9 px-4 py-2 mt-4 md:mt-0 text-slate-600 hover:text-slate-900">All
+              Reviews<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none"
+                stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
+                class="lucide lucide-arrow-right ml-2 w-4 h-4">
+                <path d="M5 12h14"></path>
+                <path d="m12 5 7 7-7 7"></path>
+              </svg></button></a>
+        </div>
+        <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+          {% for review in reviews %}
+          <div>
+            <div
+              class="rounded-xl text-card-foreground border-0 shadow-sm hover:shadow-lg transition-all duration-300 bg-white">
+              <div class="p-8"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"
+                  fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
+                  class="lucide lucide-quote w-10 h-10 text-red-500/20 mb-4">
+                  <path
+                    d="M16 3a2 2 0 0 0-2 2v6a2 2 0 0 0 2 2 1 1 0 0 1 1 1v1a2 2 0 0 1-2 2 1 1 0 0 0-1 1v2a1 1 0 0 0 1 1 6 6 0 0 0 6-6V5a2 2 0 0 0-2-2z">
+                  </path>
+                  <path
+                    d="M5 3a2 2 0 0 0-2 2v6a2 2 0 0 0 2 2 1 1 0 0 1 1 1v1a2 2 0 0 1-2 2 1 1 0 0 0-1 1v2a1 1 0 0 0 1 1 6 6 0 0 0 6-6V5a2 2 0 0 0-2-2z">
+                  </path>
+                </svg>
+                <div class="flex gap-1 mb-4">
+                  {% for i in "12345"|make_list %}
+                  <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none"
+                    stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
+                    class="lucide lucide-star w-5 h-5 text-red-500 fill-red-500">
+                    <path
+                      d="M11.525 2.295a.53.53 0 0 1 .95 0l2.31 4.679a2.123 2.123 0 0 0 1.595 1.16l5.166.756a.53.53 0 0 1 .294.904l-3.736 3.638a2.123 2.123 0 0 0-.611 1.878l.882 5.14a.53.53 0 0 1-.771.56l-4.618-2.428a2.122 2.122 0 0 0-1.973 0L6.396 21.01a.53.53 0 0 1-.77-.56l.881-5.139a2.122 2.122 0 0 0-.611-1.879L2.16 9.795a.53.53 0 0 1 .294-.906l5.165-.755a2.122 2.122 0 0 0 1.597-1.16z">
+                    </path>
+                  </svg>
+                  {% endfor %}
+                </div>
+                <p class="text-slate-600 mb-6 leading-relaxed">"{{ review.content }}"</p>
+                <div class="flex items-center gap-4 pt-4 border-t border-slate-100">
+                  <div
+                    class="w-12 h-12 rounded-full bg-gradient-to-br from-red-500 to-red-700 flex items-center justify-center text-white font-semibold text-lg">
+                    {{ review.author_name|slice:":1" }}</div>
+                  <div>
+                    <h4 class="font-semibold text-slate-900">{{ review.author_name }}</h4>
+                    <p class="text-sm text-slate-500">Purchased: {{ review.vehicle_purchased }}</p>
+                    <p class="text-xs text-slate-400">{{ review.location }}</p>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+          {% endfor %}
+        </div>
+      </div>
+    </section>
+    <section class="py-24 bg-slate-900 relative overflow-hidden">
+      <div class="absolute inset-0 opacity-10">
+        <div class="absolute top-0 left-1/4 w-96 h-96 bg-red-500 rounded-full blur-3xl"></div>
+        <div class="absolute bottom-0 right-1/4 w-64 h-64 bg-red-700 rounded-full blur-3xl"></div>
+      </div>
+      <div class="relative max-w-4xl mx-auto px-4 text-center">
+        <div>
+          <h2 class="text-4xl md:text-5xl font-bold text-white mb-6">Ready to Find Your Perfect Car?</h2>
+          <p class="text-xl text-slate-400 mb-10">Browse our extensive inventory or contact us for personalized
+            assistance.</p>
+          <div class="flex flex-col sm:flex-row gap-4 justify-center"><a href="/CarsInStock"><button
+                class="inline-flex items-center justify-center gap-2 whitespace-nowrap text-sm transition-colors focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-ring disabled:pointer-events-none disabled:opacity-50 [&amp;_svg]:pointer-events-none [&amp;_svg]:size-4 [&amp;_svg]:shrink-0 shadow bg-red-600 hover:bg-red-700 text-white font-semibold px-8 h-14 rounded-xl">Browse
+                Cars<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none"
+                  stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
+                  class="lucide lucide-arrow-right ml-2 w-5 h-5">
+                  <path d="M5 12h14"></path>
+                  <path d="m12 5 7 7-7 7"></path>
+                </svg></button></a><a href="/ContactUs"><button
+                class="inline-flex items-center justify-center gap-2 whitespace-nowrap text-sm font-medium transition-colors focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-ring disabled:pointer-events-none disabled:opacity-50 [&amp;_svg]:pointer-events-none [&amp;_svg]:size-4 [&amp;_svg]:shrink-0 border bg-slate-950 shadow-sm hover:text-accent-foreground border-slate-600 text-white hover:bg-slate-800 h-14 rounded-xl px-8">Contact
+                Us</button></a></div>
+        </div>
+      </div>
+    </section>
+  </div>
+</main>
+</main>
+{% endblock %}

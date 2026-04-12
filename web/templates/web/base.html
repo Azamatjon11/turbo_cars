@@ -1,0 +1,170 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <link href="/media/logo.png" rel="icon" type="image/png">
+    <meta content="width=device-width, initial-scale=1.0" name="viewport">
+    <title>Turbo</title>
+
+    <!-- Styles -->
+    <link crossorigin="" href="{% static 'web/assets/index_sfzm_gzx.css' %}" rel="stylesheet">
+    <link rel="stylesheet" href="{% static 'web/css/inline_styles.css' %}">
+    <script src="https://cdn.tailwindcss.com"></script>
+    {% block extra_head %}{% endblock %}
+</head>
+
+<body class="bg-white">
+    <!-- Top Bar -->
+    <div class="bg-slate-900 text-slate-300 text-sm py-2 hidden md:block">
+        <div class="max-w-7xl mx-auto px-4 flex justify-between items-center">
+            <div class="flex items-center gap-6">
+                <div class="flex items-center gap-2">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none"
+                        stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                        <path
+                            d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z">
+                        </path>
+                    </svg>
+                    <span>+8210-7902-7711</span>
+                </div>
+                <div class="flex items-center gap-2">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none"
+                        stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                        <rect width="20" height="16" x="2" y="4" rx="2"></rect>
+                        <path d="m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7"></path>
+                    </svg>
+                    <span>turbo@aaaa</span>
+                </div>
+            </div>
+            <div>Mon - Sat: 9:00 AM - 7:00 PM</div>
+        </div>
+    </div>
+
+    <!-- Navigation -->
+    <header class="sticky top-0 z-50 bg-white/95 backdrop-blur-md border-b border-slate-100">
+        <div class="max-w-7xl mx-auto px-4 h-20 flex items-center justify-between">
+            <a href="{% url 'index' %}" class="flex items-center gap-2">
+                <span
+                    class="text-3xl font-black bg-gradient-to-r from-red-600 to-red-800 bg-clip-text text-transparent italic tracking-tighter">TURBO</span>
+            </a>
+
+            <nav class="hidden lg:flex items-center gap-1">
+                <a href="{% url 'index' %}"
+                    class="px-4 py-2 rounded-md text-sm font-medium {% if request.resolver_match.url_name == 'index' %}bg-slate-100 text-slate-900{% else %}text-slate-600 hover:text-slate-900 hover:bg-slate-100{% endif %}">Home</a>
+                <a href="{% url 'cars_in_stock' %}"
+                    class="px-4 py-2 rounded-md text-sm font-medium text-slate-600 hover:text-slate-900 hover:bg-slate-100">Inventory</a>
+                <div class="relative group">
+                    <button
+                        class="px-4 py-2 rounded-md text-sm font-medium text-slate-600 hover:text-slate-900 hover:bg-slate-100 inline-flex items-center gap-1">
+                        Categories
+                        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none"
+                            stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                            <path d="m6 9 6 6 6-6" />
+                        </svg>
+                    </button>
+                    <div
+                        class="absolute top-full left-0 w-48 bg-white rounded-md shadow-lg py-2 hidden group-hover:block border border-slate-100">
+                        <a href="{% url 'new_cars' %}"
+                            class="block px-4 py-2 text-sm text-slate-600 hover:bg-slate-50 hover:text-red-600">New
+                            Cars</a>
+                        <a href="{% url 'used_cars' %}"
+                            class="block px-4 py-2 text-sm text-slate-600 hover:bg-slate-50 hover:text-red-600">Used
+                            Cars</a>
+                        <a href="{% url 'damaged_cars' %}"
+                            class="block px-4 py-2 text-sm text-slate-600 hover:bg-slate-50 hover:text-red-600">Damaged
+                            Cars</a>
+                    </div>
+                </div>
+                <a href="{% url 'about' %}"
+                    class="px-4 py-2 rounded-md text-sm font-medium text-slate-600 hover:text-slate-900 hover:bg-slate-100">About
+                    Us</a>
+                <a href="{% url 'auctions' %}"
+                    class="px-4 py-2 rounded-md text-sm font-medium text-slate-600 hover:text-slate-900 hover:bg-slate-100">Auctions</a>
+                <a href="{% url 'logistics' %}"
+                    class="px-4 py-2 rounded-md text-sm font-medium text-slate-600 hover:text-slate-900 hover:bg-slate-100">Logistics</a>
+                <a href="{% url 'reviews' %}"
+                    class="px-4 py-2 rounded-md text-sm font-medium text-slate-600 hover:text-slate-900 hover:bg-slate-100">Reviews</a>
+                <a href="{% url 'contact' %}"
+                    class="px-4 py-2 rounded-md text-sm font-medium {% if request.resolver_match.url_name == 'contact' %}bg-slate-100 text-slate-900{% else %}text-slate-600 hover:text-slate-900 hover:bg-slate-100{% endif %}">Contact</a>
+            </nav>
+
+            <div class="hidden lg:block">
+                <a href="{% url 'cars_in_stock' %}"
+                    class="bg-red-600 hover:bg-red-700 text-white font-semibold px-4 py-2 rounded-md text-sm shadow transition-colors">Browse
+                    Cars</a>
+            </div>
+
+            <!-- Mobile Menu Button (Placeholder) -->
+            <button class="lg:hidden p-2">
+                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none"
+                    stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                    <line x1="4" y1="12" x2="20" y2="12"></line>
+                    <line x1="4" y1="6" x2="20" y2="6"></line>
+                    <line x1="4" y1="18" x2="20" y2="18"></line>
+                </svg>
+            </button>
+        </div>
+    </header>
+
+    {% block content %}
+    {% endblock %}
+
+    <!-- Footer -->
+    <footer class="bg-slate-900 text-white">
+        <div class="max-w-7xl mx-auto px-4 py-16">
+            <div class="grid md:grid-cols-2 lg:grid-cols-4 gap-12">
+                <div>
+                    <a href="{% url 'index' %}" class="inline-block mb-6">
+                        <span
+                            class="text-3xl font-black bg-gradient-to-r from-red-600 to-red-800 bg-clip-text text-transparent italic tracking-tighter">TURBO</span>
+                    </a>
+                    <p class="text-slate-400 mb-6">Your trusted partner in finding the perfect vehicle. Quality cars,
+                        competitive prices, worldwide delivery.</p>
+                </div>
+                <div>
+                    <h3 class="font-semibold text-lg mb-6">Quick Links</h3>
+                    <ul class="space-y-3">
+                        <li><a href="{% url 'cars_in_stock' %}" class="text-slate-400 hover:text-white">Cars in
+                                Stock</a></li>
+                        <li><a href="{% url 'auctions' %}" class="text-slate-400 hover:text-white">Auctions</a></li>
+                        <li><a href="{% url 'logistics' %}" class="text-slate-400 hover:text-white">Logistics</a></li>
+                        <li><a href="{% url 'about' %}" class="text-slate-400 hover:text-white">About Us</a></li>
+                    </ul>
+                </div>
+                <div>
+                    <h3 class="font-semibold text-lg mb-6">Inventory</h3>
+                    <ul class="space-y-3">
+                        <li><a href="{% url 'cars_in_stock' %}" class="text-slate-400 hover:text-white">Used Cars</a>
+                        </li>
+                        <li><a href="{% url 'cars_in_stock' %}" class="text-slate-400 hover:text-white">Damaged Cars</a>
+                        </li>
+                        <li><a href="{% url 'reviews' %}" class="text-slate-400 hover:text-white">Customer Reviews</a>
+                        </li>
+                        <li><a href="{% url 'contact' %}" class="text-slate-400 hover:text-white">Contact Us</a></li>
+                    </ul>
+                </div>
+                <div>
+                    <h3 class="font-semibold text-lg mb-6">Contact</h3>
+                    <ul class="space-y-3 text-slate-400">
+                        <li>123 Auto Drive</li>
+                        <li>Jeonju, South Korea</li>
+                        <li>+8210-7902-7711</li>
+                        <li>turbo@aaaa</li>
+                    </ul>
+                </div>
+            </div>
+            <div
+                class="border-t border-slate-800 mt-12 pt-8 flex flex-col md:flex-row justify-between items-center text-sm text-slate-500">
+                <p>© 2024 TURBO. All rights reserved.</p>
+                <div class="flex gap-6 mt-4 md:mt-0">
+                    <a href="#" class="hover:text-white">Privacy Policy</a>
+                    <a href="#" class="hover:text-white">Terms of Service</a>
+                </div>
+            </div>
+        </div>
+    </footer>
+</body>
+
+</html>

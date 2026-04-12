@@ -1,0 +1,65 @@
+from django.shortcuts import render, redirect
+from django.contrib import messages
+from .models import Car, Review, ContactMessage, TeamMember
+
+def index(request):
+    featured_cars = Car.objects.filter(category='Stock').order_by('-created_at')[:6]
+    reviews = Review.objects.all().order_by('-created_at')[:3]
+    
+    context = {
+        'cars': featured_cars,
+        'reviews': reviews,
+    }
+    return render(request, 'web/index.html', context)
+
+def contact(request):
+    if request.method == 'POST':
+        name = request.POST.get('name')
+        email = request.POST.get('email')
+        message = request.POST.get('message')
+        
+        ContactMessage.objects.create(
+            name=name,
+            email=email,
+            message=message
+        )
+        messages.success(request, 'Your message has been sent successfully!')
+        return redirect('contact')
+        
+    return render(request, 'web/contact.html')
+
+def cars_in_stock(request):
+    cars = Car.objects.filter(category='Stock').order_by('-created_at')
+    return render(request, 'web/cars_in_stock.html', {'cars': cars, 'title': 'All Inventory'})
+
+def new_cars(request):
+    cars = Car.objects.filter(category='Stock', condition='New').order_by('-created_at')
+    return render(request, 'web/cars_in_stock.html', {'cars': cars, 'title': 'New Cars'})
+
+def used_cars(request):
+    cars = Car.objects.filter(category='Stock', condition='Used').order_by('-created_at')
+    return render(request, 'web/cars_in_stock.html', {'cars': cars, 'title': 'Used Cars'})
+
+def damaged_cars(request):
+    cars = Car.objects.filter(category='Stock', condition='Damaged').order_by('-created_at')
+    return render(request, 'web/cars_in_stock.html', {'cars': cars, 'title': 'Damaged Cars'})
+
+def auctions(request):
+    return render(request, 'web/simple_page.html', {'title': 'Car Auctions', 'content': 'Access exclusive car auctions directly from our platform. Coming soon.'})
+
+def logistics(request):
+    return render(request, 'web/logistics.html')
+
+def reviews(request):
+    reviews = Review.objects.all().order_by('-created_at')
+    return render(request, 'web/reviews.html', {'reviews': reviews})
+
+def about(request):
+    team = TeamMember.objects.all().order_by('created_at')
+
+    return render(request, 'web/about.html', {'team': team})
+
+def car_detail(request, pk):
+    from django.shortcuts import get_object_or_404
+    car = get_object_or_404(Car, pk=pk)
+    return render(request, 'web/car_detail.html', {'car': car})
