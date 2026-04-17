@@ -144,13 +144,29 @@
             <div
               class="rounded-xl text-card-foreground group overflow-hidden border-0 shadow-sm hover:shadow-xl transition-all duration-500 bg-white">
               <div class="relative overflow-hidden aspect-[4/3]">
-                {% if car.image %}
+                {% if car.images.all %}
+                <div class="flex overflow-x-auto snap-x snap-mandatory h-full w-full [&::-webkit-scrollbar]:hidden [-ms-overflow-style:none] [scrollbar-width:none]">
+                  {% if car.image %}
+                  <img src="{{ car.image.url }}" alt="{{ car.title }}" class="snap-center shrink-0 min-w-full h-full object-cover group-hover:scale-105 transition-transform duration-700">
+                  {% endif %}
+                  {% for img in car.images.all %}
+                  <img src="{{ img.image.url }}" alt="{{ car.title }}" class="snap-center shrink-0 min-w-full h-full object-cover group-hover:scale-105 transition-transform duration-700">
+                  {% endfor %}
+                </div>
+                <!-- Navigation Arrows -->
+                <button onclick="event.preventDefault(); this.parentElement.querySelector('.snap-x').scrollBy({left: -this.parentElement.querySelector('.snap-x').clientWidth, behavior: 'smooth'})" class="absolute left-2 top-1/2 -translate-y-1/2 w-8 h-8 flex items-center justify-center rounded-full bg-white/70 hover:bg-white focus:bg-white text-slate-800 shadow-md opacity-0 group-hover:opacity-100 transition-opacity duration-300 z-10 cursor-pointer pointer-events-auto">
+                  <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="w-5 h-5"><path d="m15 18-6-6 6-6"/></svg>
+                </button>
+                <button onclick="event.preventDefault(); this.parentElement.querySelector('.snap-x').scrollBy({left: this.parentElement.querySelector('.snap-x').clientWidth, behavior: 'smooth'})" class="absolute right-2 top-1/2 -translate-y-1/2 w-8 h-8 flex items-center justify-center rounded-full bg-white/70 hover:bg-white focus:bg-white text-slate-800 shadow-md opacity-0 group-hover:opacity-100 transition-opacity duration-300 z-10 cursor-pointer pointer-events-auto">
+                  <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="w-5 h-5"><path d="m9 18 6-6-6-6"/></svg>
+                </button>
+                {% elif car.image %}
                 <img src="{{ car.image.url }}" alt="{{ car.title }}"
                   class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700">
                 {% else %}
                 <div class="w-full h-full bg-slate-200 flex items-center justify-center text-slate-400">No Image</div>
                 {% endif %}
-                <div class="absolute top-4 left-4 flex gap-2">
+                <div class="absolute top-4 left-4 flex gap-2 pointer-events-none">
                   <div
                     class="inline-flex items-center rounded-md text-xs font-semibold transition-colors focus:outline-none focus:ring-2 focus:ring-ring focus:ring-offset-2 border-transparent shadow hover:bg-primary/80 {% if car.condition == 'Damaged' %}bg-orange-500{% else %}bg-emerald-500{% endif %} text-white border-0 px-3 py-1">
                     {{ car.condition }}</div>

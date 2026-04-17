@@ -64,3 +64,11 @@ class TeamMember(models.Model):
 
     def __str__(self):
         return self.name
+
+class CarImage(models.Model):
+    car = models.ForeignKey(Car, related_name='images', on_delete=models.CASCADE)
+    image = models.ImageField(upload_to='cars/')
+    created_at = models.DateTimeField(auto_now_add=True)
+
+    def __str__(self):
+        return f"Image for {self.car.title}"
