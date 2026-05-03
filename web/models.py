@@ -60,6 +60,8 @@ class TeamMember(models.Model):
     role = models.CharField(max_length=100)
     bio = models.TextField()
     image = models.ImageField(upload_to='team/', null=True, blank=True)
+    whatsapp_number = models.CharField(max_length=20, null=True, blank=True, help_text="Enter number with country code, e.g., +1234567890")
+    telegram_number = models.CharField(max_length=50, null=True, blank=True, help_text="Enter Telegram username or number (e.g. username or +1234567890)")
     created_at = models.DateTimeField(auto_now_add=True)
 
     def __str__(self):

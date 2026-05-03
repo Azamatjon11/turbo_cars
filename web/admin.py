@@ -35,9 +35,7 @@ class CarAdminForm(forms.ModelForm):
 # Unregister Group model as it's not needed
 admin.site.unregister(Group)
 
-@admin.register(CarImage)
-class CarImageAdmin(admin.ModelAdmin):
-    list_display = ('car', 'created_at')
+
 
 @admin.register(Car)
 class CarAdmin(admin.ModelAdmin):
