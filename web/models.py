@@ -16,13 +16,17 @@ class Car(models.Model):
         ('Electric', 'Electric'),
         ('Hybrid', 'Hybrid'),
     ]
+    MILEAGE_UNIT_CHOICES = [
+        ('km', 'km'),
+        ('mil', 'mil'),
+    ]
 
     title = models.CharField(max_length=200)
     year = models.IntegerField()
-    mileage = models.CharField(max_length=50)  # text to allow "15,000 mi" formatting flexibility
+    mileage = models.PositiveIntegerField()
+    mileage_unit = models.CharField(max_length=3, choices=MILEAGE_UNIT_CHOICES, default='mil')
     fuel_type = models.CharField(max_length=50, choices=FUEL_CHOICES)
     price = models.DecimalField(max_digits=10, decimal_places=2)
-    original_price = models.DecimalField(max_digits=10, decimal_places=2, null=True, blank=True) # For discount display if needed
     image = models.ImageField(upload_to='cars/', null=True, blank=True)
     condition = models.CharField(max_length=50, choices=CONDITION_CHOICES)
     category = models.CharField(max_length=50, choices=CATEGORY_CHOICES, default='Stock')
@@ -30,6 +34,10 @@ class Car(models.Model):
 
     def __str__(self):
         return self.title
+
+    @property
+    def display_mileage(self):
+        return f"{self.mileage:,} {self.mileage_unit}"
 
 class Review(models.Model):
     author_name = models.CharField(max_length=100)

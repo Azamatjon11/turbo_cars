@@ -16,7 +16,8 @@ class Command(BaseCommand):
             {
                 "title": "2022 BMW 3 Series 330i",
                 "year": 2022,
-                "mileage": "15,000 mi",
+                "mileage": 15000,
+                "mileage_unit": "mil",
                 "fuel_type": "Petrol",
                 "price": 42500,
                 "condition": "Used",
@@ -26,7 +27,8 @@ class Command(BaseCommand):
             {
                 "title": "2021 Mercedes-Benz C-Class",
                 "year": 2021,
-                "mileage": "22,000 mi",
+                "mileage": 22000,
+                "mileage_unit": "mil",
                 "fuel_type": "Petrol",
                 "price": 38900,
                 "condition": "Used",
@@ -36,7 +38,8 @@ class Command(BaseCommand):
             {
                 "title": "2020 Audi A4 Premium Plus",
                 "year": 2020,
-                "mileage": "28,000 mi",
+                "mileage": 28000,
+                "mileage_unit": "mil",
                 "fuel_type": "Petrol",
                 "price": 34500,
                 "condition": "Used",
@@ -46,7 +49,8 @@ class Command(BaseCommand):
             {
                 "title": "2019 Tesla Model 3 Long Range",
                 "year": 2019,
-                "mileage": "35,000 mi",
+                "mileage": 35000,
+                "mileage_unit": "mil",
                 "fuel_type": "Electric",
                 "price": 32000,
                 "condition": "Used",
@@ -56,7 +60,8 @@ class Command(BaseCommand):
             {
                 "title": "2018 Range Rover Sport",
                 "year": 2018,
-                "mileage": "65,000 mi",
+                "mileage": 65000,
+                "mileage_unit": "mil",
                 "fuel_type": "Diesel",
                 "price": 8500,
                 "condition": "Damaged",
@@ -66,7 +71,8 @@ class Command(BaseCommand):
             {
                 "title": "2022 Toyota Camry Hybrid",
                 "year": 2022,
-                "mileage": "12,000 mi",
+                "mileage": 12000,
+                "mileage_unit": "mil",
                 "fuel_type": "Hybrid",
                 "price": 29500,
                 "condition": "Used",

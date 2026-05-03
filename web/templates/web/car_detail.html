@@ -51,10 +51,6 @@
                 <h1 class="text-4xl font-bold text-slate-900 mb-4">{{ car.title }}</h1>
                 <div class="flex items-end gap-4 mb-8">
                     <span class="text-4xl font-bold text-slate-900">${{ car.price|floatformat:0|intcomma }}</span>
-                    {% if car.original_price %}
-                    <span class="text-xl text-slate-400 line-through mb-1">${{ car.original_price|floatformat:0|intcomma
-                        }}</span>
-                    {% endif %}
                 </div>
 
                 <div class="grid grid-cols-2 gap-6 mb-8">
@@ -82,7 +78,7 @@
                             </svg>
                             <span class="text-sm font-medium">Mileage</span>
                         </div>
-                        <div class="text-lg font-semibold text-slate-900">{{ car.mileage }}</div>
+                        <div class="text-lg font-semibold text-slate-900">{{ car.display_mileage }}</div>
                     </div>
                     <div class="p-4 bg-slate-50 rounded-xl">
                         <div class="flex items-center gap-3 text-slate-500 mb-2">

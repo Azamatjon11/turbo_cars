@@ -22,6 +22,11 @@ class MultipleFileField(forms.FileField):
         return result
 
 class CarAdminForm(forms.ModelForm):
+    mileage_unit = forms.ChoiceField(
+        choices=Car.MILEAGE_UNIT_CHOICES,
+        widget=forms.RadioSelect,
+        label="Mileage Unit",
+    )
     images_upload = MultipleFileField(
         required=False,
         label="Upload All Pictures",
