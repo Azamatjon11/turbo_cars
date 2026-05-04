@@ -36,7 +36,7 @@
                         <rect width="20" height="16" x="2" y="4" rx="2"></rect>
                         <path d="m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7"></path>
                     </svg>
-                    <span>turbo@aaaa</span>
+                    <span>turbocarsautoexport@gmail.com</span>
                 </div>
             </div>
             <div>{{ tr.business_hours }}</div>
@@ -52,9 +52,11 @@
 
             <nav class="hidden lg:flex items-center gap-1">
                 <a href="{% url 'index' %}"
-                    class="px-4 py-2 rounded-md text-sm font-medium transition-colors {% if request.resolver_match.url_name == 'index' %}bg-slate-100 text-slate-900{% else %}text-slate-600 hover:text-slate-900 hover:bg-slate-100{% endif %}">{{ tr.home }}</a>
+                    class="px-4 py-2 rounded-md text-sm font-medium transition-colors {% if request.resolver_match.url_name == 'index' %}bg-slate-100 text-slate-900{% else %}text-slate-600 hover:text-slate-900 hover:bg-slate-100{% endif %}">{{
+                    tr.home }}</a>
                 <a href="{% url 'cars_in_stock' %}"
-                    class="px-4 py-2 rounded-md text-sm font-medium transition-colors text-slate-600 hover:text-slate-900 hover:bg-slate-100">{{ tr.inventory }}</a>
+                    class="px-4 py-2 rounded-md text-sm font-medium transition-colors text-slate-600 hover:text-slate-900 hover:bg-slate-100">{{
+                    tr.inventory }}</a>
                 <div class="relative group">
                     <button
                         class="px-4 py-2 rounded-md text-sm font-medium transition-colors text-slate-600 hover:text-slate-900 hover:bg-slate-100 inline-flex items-center gap-1">
@@ -67,23 +69,31 @@
                     <div
                         class="absolute top-full left-0 w-48 bg-white rounded-md shadow-lg py-2 hidden group-hover:block border border-slate-100">
                         <a href="{% url 'new_cars' %}"
-                            class="block px-4 py-2 text-sm text-slate-600 hover:bg-slate-50 hover:text-red-600">{{ tr.new_cars }}</a>
+                            class="block px-4 py-2 text-sm text-slate-600 hover:bg-slate-50 hover:text-red-600">{{
+                            tr.new_cars }}</a>
                         <a href="{% url 'used_cars' %}"
-                            class="block px-4 py-2 text-sm text-slate-600 hover:bg-slate-50 hover:text-red-600">{{ tr.used_cars }}</a>
+                            class="block px-4 py-2 text-sm text-slate-600 hover:bg-slate-50 hover:text-red-600">{{
+                            tr.used_cars }}</a>
                         <a href="{% url 'damaged_cars' %}"
-                            class="block px-4 py-2 text-sm text-slate-600 hover:bg-slate-50 hover:text-red-600">{{ tr.damaged_cars }}</a>
+                            class="block px-4 py-2 text-sm text-slate-600 hover:bg-slate-50 hover:text-red-600">{{
+                            tr.damaged_cars }}</a>
                     </div>
                 </div>
                 <a href="{% url 'about' %}"
-                    class="px-4 py-2 rounded-md text-sm font-medium transition-colors text-slate-600 hover:text-slate-900 hover:bg-slate-100">{{ tr.about_us }}</a>
+                    class="px-4 py-2 rounded-md text-sm font-medium transition-colors text-slate-600 hover:text-slate-900 hover:bg-slate-100">{{
+                    tr.about_us }}</a>
                 <a href="{% url 'auctions' %}"
-                    class="px-4 py-2 rounded-md text-sm font-medium transition-colors text-slate-600 hover:text-slate-900 hover:bg-slate-100">{{ tr.auctions }}</a>
+                    class="px-4 py-2 rounded-md text-sm font-medium transition-colors text-slate-600 hover:text-slate-900 hover:bg-slate-100">{{
+                    tr.auctions }}</a>
                 <a href="{% url 'logistics' %}"
-                    class="px-4 py-2 rounded-md text-sm font-medium transition-colors text-slate-600 hover:text-slate-900 hover:bg-slate-100">{{ tr.logistics }}</a>
+                    class="px-4 py-2 rounded-md text-sm font-medium transition-colors text-slate-600 hover:text-slate-900 hover:bg-slate-100">{{
+                    tr.logistics }}</a>
                 <a href="{% url 'reviews' %}"
-                    class="px-4 py-2 rounded-md text-sm font-medium transition-colors text-slate-600 hover:text-slate-900 hover:bg-slate-100">{{ tr.reviews }}</a>
+                    class="px-4 py-2 rounded-md text-sm font-medium transition-colors text-slate-600 hover:text-slate-900 hover:bg-slate-100">{{
+                    tr.reviews }}</a>
                 <a href="{% url 'contact' %}"
-                    class="px-4 py-2 rounded-md text-sm font-medium transition-colors {% if request.resolver_match.url_name == 'contact' %}bg-slate-100 text-slate-900{% else %}text-slate-600 hover:text-slate-900 hover:bg-slate-100{% endif %}">{{ tr.contact }}</a>
+                    class="px-4 py-2 rounded-md text-sm font-medium transition-colors {% if request.resolver_match.url_name == 'contact' %}bg-slate-100 text-slate-900{% else %}text-slate-600 hover:text-slate-900 hover:bg-slate-100{% endif %}">{{
+                    tr.contact }}</a>
             </nav>
 
             <div class="hidden lg:flex items-center gap-3">
@@ -91,7 +101,8 @@
                     <button type="button" id="desktop-language-button" aria-expanded="false"
                         class="inline-flex h-10 items-center gap-2 rounded-full border border-slate-200 bg-white px-3 text-sm font-semibold text-slate-700 transition-colors hover:bg-slate-50 focus:outline-none focus:ring-2 focus:ring-red-600">
                         <span>{{ tr.language }}</span>
-                        <span class="rounded-full bg-slate-100 px-2 py-0.5 text-xs text-slate-900">{{ current_language|upper }}</span>
+                        <span class="rounded-full bg-slate-100 px-2 py-0.5 text-xs text-slate-900">{{
+                            current_language|upper }}</span>
                     </button>
                     <div id="desktop-language-options"
                         class="pointer-events-none absolute right-0 top-full mt-3 w-44 translate-y-1 rounded-2xl border border-slate-100 bg-white p-2 opacity-0 shadow-xl transition-all duration-200">
@@ -104,8 +115,6 @@
                         {% endfor %}
                     </div>
                 </div>
-                <a href="{% url 'cars_in_stock' %}"
-                    class="bg-red-600 text-white hover:bg-red-700 font-semibold px-4 py-2 rounded-md text-sm shadow transition-colors">{{ tr.browse_cars }}</a>
             </div>
 
             <button type="button" id="mobile-menu-button" aria-controls="mobile-menu" aria-expanded="false"
@@ -144,7 +153,8 @@
                 <div class="grid grid-cols-3 rounded-full bg-slate-100 p-1">
                     {% for language in languages %}
                     <a href="{% url 'set_language' language.code %}?next={{ request.get_full_path|urlencode }}"
-                        class="rounded-full px-2.5 py-1.5 text-center text-xs font-bold transition-colors {% if current_language == language.code %}bg-red-600 text-white shadow-sm{% else %}text-slate-600 hover:text-slate-950{% endif %}">{{ language.short }}</a>
+                        class="rounded-full px-2.5 py-1.5 text-center text-xs font-bold transition-colors {% if current_language == language.code %}bg-red-600 text-white shadow-sm{% else %}text-slate-600 hover:text-slate-950{% endif %}">{{
+                        language.short }}</a>
                     {% endfor %}
                 </div>
             </div>
@@ -154,12 +164,14 @@
                     <a href="{% url 'index' %}"
                         class="group flex items-center justify-between rounded-xl px-4 py-3.5 text-base font-semibold transition-colors {% if request.resolver_match.url_name == 'index' %}bg-slate-100 text-slate-950{% else %}text-slate-700 hover:bg-slate-50 hover:text-slate-950{% endif %}">
                         <span>{{ tr.home }}</span>
-                        <span class="h-1.5 w-1.5 rounded-full bg-red-600 opacity-0 transition-opacity group-hover:opacity-100"></span>
+                        <span
+                            class="h-1.5 w-1.5 rounded-full bg-red-600 opacity-0 transition-opacity group-hover:opacity-100"></span>
                     </a>
                     <a href="{% url 'cars_in_stock' %}"
                         class="group flex items-center justify-between rounded-xl px-4 py-3.5 text-base font-semibold text-slate-700 transition-colors hover:bg-slate-50 hover:text-slate-950">
                         <span>{{ tr.inventory }}</span>
-                        <span class="h-1.5 w-1.5 rounded-full bg-red-600 opacity-0 transition-opacity group-hover:opacity-100"></span>
+                        <span
+                            class="h-1.5 w-1.5 rounded-full bg-red-600 opacity-0 transition-opacity group-hover:opacity-100"></span>
                     </a>
 
                     <div class="overflow-hidden rounded-xl">
@@ -176,11 +188,14 @@
                             class="max-h-0 overflow-hidden opacity-0 transition-all duration-300 ease-out">
                             <div class="ml-4 mt-1 grid gap-1 border-l border-slate-200 pl-3 pb-2">
                                 <a href="{% url 'new_cars' %}"
-                                    class="rounded-lg px-3 py-2.5 text-sm font-medium text-slate-600 transition-colors hover:bg-red-50 hover:text-red-600">{{ tr.new_cars }}</a>
+                                    class="rounded-lg px-3 py-2.5 text-sm font-medium text-slate-600 transition-colors hover:bg-red-50 hover:text-red-600">{{
+                                    tr.new_cars }}</a>
                                 <a href="{% url 'used_cars' %}"
-                                    class="rounded-lg px-3 py-2.5 text-sm font-medium text-slate-600 transition-colors hover:bg-red-50 hover:text-red-600">{{ tr.used_cars }}</a>
+                                    class="rounded-lg px-3 py-2.5 text-sm font-medium text-slate-600 transition-colors hover:bg-red-50 hover:text-red-600">{{
+                                    tr.used_cars }}</a>
                                 <a href="{% url 'damaged_cars' %}"
-                                    class="rounded-lg px-3 py-2.5 text-sm font-medium text-slate-600 transition-colors hover:bg-red-50 hover:text-red-600">{{ tr.damaged_cars }}</a>
+                                    class="rounded-lg px-3 py-2.5 text-sm font-medium text-slate-600 transition-colors hover:bg-red-50 hover:text-red-600">{{
+                                    tr.damaged_cars }}</a>
                             </div>
                         </div>
                     </div>
@@ -188,35 +203,36 @@
                     <a href="{% url 'about' %}"
                         class="group flex items-center justify-between rounded-xl px-4 py-3.5 text-base font-semibold text-slate-700 transition-colors hover:bg-slate-50 hover:text-slate-950">
                         <span>{{ tr.about_us }}</span>
-                        <span class="h-1.5 w-1.5 rounded-full bg-red-600 opacity-0 transition-opacity group-hover:opacity-100"></span>
+                        <span
+                            class="h-1.5 w-1.5 rounded-full bg-red-600 opacity-0 transition-opacity group-hover:opacity-100"></span>
                     </a>
                     <a href="{% url 'auctions' %}"
                         class="group flex items-center justify-between rounded-xl px-4 py-3.5 text-base font-semibold text-slate-700 transition-colors hover:bg-slate-50 hover:text-slate-950">
                         <span>{{ tr.auctions }}</span>
-                        <span class="h-1.5 w-1.5 rounded-full bg-red-600 opacity-0 transition-opacity group-hover:opacity-100"></span>
+                        <span
+                            class="h-1.5 w-1.5 rounded-full bg-red-600 opacity-0 transition-opacity group-hover:opacity-100"></span>
                     </a>
                     <a href="{% url 'logistics' %}"
                         class="group flex items-center justify-between rounded-xl px-4 py-3.5 text-base font-semibold text-slate-700 transition-colors hover:bg-slate-50 hover:text-slate-950">
                         <span>{{ tr.logistics }}</span>
-                        <span class="h-1.5 w-1.5 rounded-full bg-red-600 opacity-0 transition-opacity group-hover:opacity-100"></span>
+                        <span
+                            class="h-1.5 w-1.5 rounded-full bg-red-600 opacity-0 transition-opacity group-hover:opacity-100"></span>
                     </a>
                     <a href="{% url 'reviews' %}"
                         class="group flex items-center justify-between rounded-xl px-4 py-3.5 text-base font-semibold text-slate-700 transition-colors hover:bg-slate-50 hover:text-slate-950">
                         <span>{{ tr.reviews }}</span>
-                        <span class="h-1.5 w-1.5 rounded-full bg-red-600 opacity-0 transition-opacity group-hover:opacity-100"></span>
+                        <span
+                            class="h-1.5 w-1.5 rounded-full bg-red-600 opacity-0 transition-opacity group-hover:opacity-100"></span>
                     </a>
                     <a href="{% url 'contact' %}"
                         class="group flex items-center justify-between rounded-xl px-4 py-3.5 text-base font-semibold transition-colors {% if request.resolver_match.url_name == 'contact' %}bg-slate-100 text-slate-950{% else %}text-slate-700 hover:bg-slate-50 hover:text-slate-950{% endif %}">
                         <span>{{ tr.contact }}</span>
-                        <span class="h-1.5 w-1.5 rounded-full bg-red-600 opacity-0 transition-opacity group-hover:opacity-100"></span>
+                        <span
+                            class="h-1.5 w-1.5 rounded-full bg-red-600 opacity-0 transition-opacity group-hover:opacity-100"></span>
                     </a>
                 </div>
             </nav>
 
-            <div class="border-t border-slate-100 p-4">
-                <a href="{% url 'cars_in_stock' %}"
-                    class="flex h-12 items-center justify-center rounded-xl bg-red-600 px-4 text-sm font-bold text-white shadow-sm transition-colors hover:bg-red-700">{{ tr.browse_cars }}</a>
-            </div>
         </div>
     </aside>
 
@@ -229,29 +245,39 @@
             <div class="grid md:grid-cols-2 lg:grid-cols-4 gap-12">
                 <div>
                     <a href="{% url 'index' %}" class="inline-block mb-6">
-                        <img src="{% static 'web/logo.png' %}" alt="TURBO" class="h-12 bg-white rounded-lg px-3 py-1.5 shadow-sm object-contain">
+                        <img src="{% static 'web/logo.png' %}" alt="TURBO"
+                            class="h-12 bg-white rounded-lg px-3 py-1.5 shadow-sm object-contain">
                     </a>
                     <p class="text-slate-400 mb-6">{{ tr.footer_tagline }}</p>
                 </div>
                 <div>
                     <h3 class="font-semibold text-lg mb-6">{{ tr.quick_links }}</h3>
                     <ul class="space-y-3">
-                        <li><a href="{% url 'cars_in_stock' %}" class="text-slate-400 hover:text-white transition-colors">{{ tr.cars_in_stock }}</a></li>
-                        <li><a href="{% url 'auctions' %}" class="text-slate-400 hover:text-white transition-colors">{{ tr.auctions }}</a></li>
-                        <li><a href="{% url 'logistics' %}" class="text-slate-400 hover:text-white transition-colors">{{ tr.logistics }}</a></li>
-                        <li><a href="{% url 'about' %}" class="text-slate-400 hover:text-white transition-colors">{{ tr.about_us }}</a></li>
+                        <li><a href="{% url 'cars_in_stock' %}"
+                                class="text-slate-400 hover:text-white transition-colors">{{ tr.cars_in_stock }}</a>
+                        </li>
+                        <li><a href="{% url 'auctions' %}" class="text-slate-400 hover:text-white transition-colors">{{
+                                tr.auctions }}</a></li>
+                        <li><a href="{% url 'logistics' %}" class="text-slate-400 hover:text-white transition-colors">{{
+                                tr.logistics }}</a></li>
+                        <li><a href="{% url 'about' %}" class="text-slate-400 hover:text-white transition-colors">{{
+                                tr.about_us }}</a></li>
                     </ul>
                 </div>
                 <div>
                     <h3 class="font-semibold text-lg mb-6">{{ tr.inventory }}</h3>
                     <ul class="space-y-3">
-                        <li><a href="{% url 'cars_in_stock' %}" class="text-slate-400 hover:text-white transition-colors">{{ tr.used_cars }}</a>
+                        <li><a href="{% url 'cars_in_stock' %}"
+                                class="text-slate-400 hover:text-white transition-colors">{{ tr.used_cars }}</a>
                         </li>
-                        <li><a href="{% url 'cars_in_stock' %}" class="text-slate-400 hover:text-white transition-colors">{{ tr.damaged_cars }}</a>
+                        <li><a href="{% url 'cars_in_stock' %}"
+                                class="text-slate-400 hover:text-white transition-colors">{{ tr.damaged_cars }}</a>
                         </li>
-                        <li><a href="{% url 'reviews' %}" class="text-slate-400 hover:text-white transition-colors">{{ tr.customer_reviews }}</a>
+                        <li><a href="{% url 'reviews' %}" class="text-slate-400 hover:text-white transition-colors">{{
+                                tr.customer_reviews }}</a>
                         </li>
-                        <li><a href="{% url 'contact' %}" class="text-slate-400 hover:text-white transition-colors">{{ tr.contact_us }}</a></li>
+                        <li><a href="{% url 'contact' %}" class="text-slate-400 hover:text-white transition-colors">{{
+                                tr.contact_us }}</a></li>
                     </ul>
                 </div>
                 <div>
