@@ -54,6 +54,30 @@ class Review(models.Model):
     def author_initial(self):
         return self.author_name[0] if self.author_name else "?"
 
+    @property
+    def has_media(self):
+        return self.media.exists()
+
+class ReviewMedia(models.Model):
+    MEDIA_TYPE_CHOICES = [
+        ('image', 'Image'),
+        ('video', 'Video'),
+    ]
+
+    review = models.ForeignKey(Review, related_name='media', on_delete=models.CASCADE)
+    media_type = models.CharField(max_length=10, choices=MEDIA_TYPE_CHOICES)
+    image = models.ImageField(upload_to='reviews/photos/', null=True, blank=True)
+    video = models.FileField(upload_to='reviews/videos/', null=True, blank=True)
+    caption = models.CharField(max_length=160, blank=True)
+    sort_order = models.PositiveIntegerField(default=0)
+    created_at = models.DateTimeField(auto_now_add=True)
+
+    class Meta:
+        ordering = ['sort_order', 'created_at']
+
+    def __str__(self):
+        return f"{self.get_media_type_display()} for {self.review}"
+
 class ContactMessage(models.Model):
     name = models.CharField(max_length=100)
     email = models.EmailField()

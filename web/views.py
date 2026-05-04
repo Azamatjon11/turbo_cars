@@ -22,7 +22,7 @@ def set_language(request, language):
 
 def index(request):
     featured_cars = Car.objects.filter(category='Stock').order_by('-created_at')[:6]
-    reviews = Review.objects.all().order_by('-created_at')[:3]
+    reviews = Review.objects.prefetch_related('media').all().order_by('-created_at')[:3]
     
     context = {
         'cars': featured_cars,
@@ -69,7 +69,7 @@ def logistics(request):
     return render(request, 'web/logistics.html')
 
 def reviews(request):
-    reviews = Review.objects.all().order_by('-created_at')
+    reviews = Review.objects.prefetch_related('media').all().order_by('-created_at')
     return render(request, 'web/reviews.html', {'reviews': reviews})
 
 def about(request):

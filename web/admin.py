@@ -1,8 +1,10 @@
+from pathlib import Path
+
 from django.contrib import admin
 from django.contrib.auth.models import Group
 from django.utils.html import format_html
 from django.urls import reverse
-from .models import Car, Review, ContactMessage, TeamMember, CarImage
+from .models import Car, Review, ContactMessage, TeamMember, CarImage, ReviewMedia
 from django import forms
 
 class MultipleFileInput(forms.ClearableFileInput):
@@ -37,6 +39,21 @@ class CarAdminForm(forms.ModelForm):
         model = Car
         exclude = ('image',)
 
+class ReviewAdminForm(forms.ModelForm):
+    media_upload = MultipleFileField(
+        required=False,
+        label="Add Review Photos/Videos",
+        help_text="Select delivery photos and video clips for this customer review."
+    )
+
+    def __init__(self, *args, **kwargs):
+        super().__init__(*args, **kwargs)
+        self.fields['media_upload'].widget.attrs['accept'] = 'image/*,video/*'
+
+    class Meta:
+        model = Review
+        fields = '__all__'
+
 # Unregister Group model as it's not needed
 admin.site.unregister(Group)
 
@@ -70,11 +87,39 @@ class CarAdmin(admin.ModelAdmin):
         return format_html('<a class="button" style="color: #ba2121; font-weight: bold;" href="{}">Delete</a>', url)
     delete_button.short_description = 'Actions'
 
+class ReviewMediaInline(admin.TabularInline):
+    model = ReviewMedia
+    extra = 1
+    fields = ('media_type', 'image', 'video', 'caption', 'sort_order')
+
 @admin.register(Review)
 class ReviewAdmin(admin.ModelAdmin):
-    list_display = ('author_name', 'vehicle_purchased', 'rating', 'created_at', 'delete_button')
+    form = ReviewAdminForm
+    inlines = [ReviewMediaInline]
+    list_display = ('author_name', 'vehicle_purchased', 'rating', 'media_count', 'created_at', 'delete_button')
     list_filter = ('rating', 'created_at')
     search_fields = ('author_name', 'vehicle_purchased', 'content')
+
+    def save_model(self, request, obj, form, change):
+        super().save_model(request, obj, form, change)
+
+        uploaded_media = request.FILES.getlist('media_upload')
+        next_sort_order = obj.media.count()
+        for index, uploaded_file in enumerate(uploaded_media):
+            content_type = uploaded_file.content_type or ''
+            extension = Path(uploaded_file.name).suffix.lower()
+            is_video = content_type.startswith('video/') or extension in {'.mp4', '.mov', '.m4v', '.webm', '.avi'}
+            ReviewMedia.objects.create(
+                review=obj,
+                media_type='video' if is_video else 'image',
+                video=uploaded_file if is_video else None,
+                image=None if is_video else uploaded_file,
+                sort_order=next_sort_order + index,
+            )
+
+    def media_count(self, obj):
+        return obj.media.count()
+    media_count.short_description = 'Media'
 
     def delete_button(self, obj):
         url = reverse('admin:web_review_delete', args=[obj.id])

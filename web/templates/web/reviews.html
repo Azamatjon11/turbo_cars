@@ -9,12 +9,74 @@
             <p class="text-slate-600">{{ tr.reviews_intro }}</p>
         </div>
 
-        <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+        <div class="grid lg:grid-cols-2 gap-8">
             {% for review in reviews %}
-            <div>
+            <article>
                 <div
-                    class="rounded-xl text-card-foreground border-0 shadow-sm hover:shadow-lg transition-all duration-300 bg-white">
+                    class="rounded-2xl text-card-foreground border border-slate-100 shadow-sm hover:shadow-xl transition-all duration-300 bg-white overflow-hidden">
+                    {% if review.media.all %}
+                    <div class="relative bg-slate-950 group" data-review-slider>
+                        <div class="flex aspect-video overflow-x-auto snap-x snap-mandatory scroll-smooth [scrollbar-width:none] [&::-webkit-scrollbar]:hidden" data-review-slider-track>
+                            {% for item in review.media.all %}
+                            <div class="relative min-w-full snap-center bg-slate-900">
+                                {% if item.media_type == 'video' and item.video %}
+                                <video class="h-full w-full object-contain bg-black" controls playsinline preload="metadata">
+                                    <source src="{{ item.video.url }}">
+                                </video>
+                                <div class="pointer-events-none absolute left-3 top-3 rounded-full bg-red-600 px-3 py-1 text-xs font-bold text-white shadow">
+                                    {{ tr.play_video }}
+                                </div>
+                                {% elif item.image %}
+                                <img src="{{ item.image.url }}" alt="{{ item.caption|default:review.vehicle_purchased }}" class="h-full w-full object-cover">
+                                {% endif %}
+                                {% if item.caption %}
+                                <div class="absolute bottom-0 left-0 right-0 bg-gradient-to-t from-black/70 to-transparent p-3 text-xs font-medium text-white">
+                                    {{ item.caption }}
+                                </div>
+                                {% endif %}
+                            </div>
+                            {% endfor %}
+                        </div>
+                        {% if review.media.all|length > 1 %}
+                        <button type="button" data-review-slider-prev
+                            class="absolute left-3 top-1/2 z-10 flex h-10 w-10 -translate-y-1/2 items-center justify-center rounded-full bg-white/90 text-slate-950 shadow-lg transition hover:bg-white md:opacity-0 md:group-hover:opacity-100">
+                            <span class="sr-only">Previous media</span>
+                            <svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" viewBox="0 0 24 24"
+                                fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                                stroke-linejoin="round">
+                                <path d="m15 18-6-6 6-6"></path>
+                            </svg>
+                        </button>
+                        <button type="button" data-review-slider-next
+                            class="absolute right-3 top-1/2 z-10 flex h-10 w-10 -translate-y-1/2 items-center justify-center rounded-full bg-white/90 text-slate-950 shadow-lg transition hover:bg-white md:opacity-0 md:group-hover:opacity-100">
+                            <span class="sr-only">Next media</span>
+                            <svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" viewBox="0 0 24 24"
+                                fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                                stroke-linejoin="round">
+                                <path d="m9 18 6-6-6-6"></path>
+                            </svg>
+                        </button>
+                        <div class="absolute bottom-3 left-1/2 z-10 flex -translate-x-1/2 gap-2 rounded-full bg-black/45 px-3 py-2 backdrop-blur-sm" data-review-slider-dots>
+                            {% for item in review.media.all %}
+                            <button type="button" data-review-slider-dot="{{ forloop.counter0 }}"
+                                class="h-2 w-2 rounded-full bg-white/50 transition-all first:w-5 first:bg-white">
+                                <span class="sr-only">Media {{ forloop.counter }}</span>
+                            </button>
+                            {% endfor %}
+                        </div>
+                        {% endif %}
+                    </div>
+                    {% endif %}
                     <div class="p-8">
+                        <div class="mb-5 flex items-start justify-between gap-4">
+                            <div>
+                                <div class="text-xs font-bold uppercase tracking-wider text-red-600">{{ tr.delivery_gallery }}</div>
+                                <h2 class="mt-1 text-xl font-bold text-slate-900">{{ review.vehicle_purchased }}</h2>
+                            </div>
+                            {% if review.media.all %}
+                            <span class="rounded-full bg-slate-100 px-3 py-1 text-xs font-semibold text-slate-600">{{ tr.customer_media }}</span>
+                            {% endif %}
+                        </div>
                         <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none"
                             stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
                             class="lucide lucide-quote w-10 h-10 text-red-500/20 mb-4">
@@ -29,7 +91,7 @@
                             {% for i in "12345"|make_list %}
                             <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"
                                 fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
-                                stroke-linejoin="round" class="lucide lucide-star w-5 h-5 text-red-500 fill-red-500">
+                                stroke-linejoin="round" class="lucide lucide-star w-5 h-5 {% if forloop.counter <= review.rating %}text-red-500 fill-red-500{% else %}text-slate-300{% endif %}">
                                 <path
                                     d="M11.525 2.295a.53.53 0 0 1 .95 0l2.31 4.679a2.123 2.123 0 0 0 1.595 1.16l5.166.756a.53.53 0 0 1 .294.904l-3.736 3.638a2.123 2.123 0 0 0-.611 1.878l.882 5.14a.53.53 0 0 1-.771.56l-4.618-2.428a2.122 2.122 0 0 0-1.973 0L6.396 21.01a.53.53 0 0 1-.77-.56l.881-5.139a2.122 2.122 0 0 0-.611-1.879L2.16 9.795a.53.53 0 0 1 .294-.906l5.165-.755a2.122 2.122 0 0 0 1.597-1.16z">
                                 </path>
@@ -50,9 +112,79 @@
                         </div>
                     </div>
                 </div>
-            </div>
+            </article>
             {% endfor %}
         </div>
     </div>
 </main>
+<script>
+    document.addEventListener('DOMContentLoaded', function () {
+        document.querySelectorAll('[data-review-slider]').forEach(function (slider) {
+            const track = slider.querySelector('[data-review-slider-track]');
+            const slides = Array.from(track.children);
+            const previous = slider.querySelector('[data-review-slider-prev]');
+            const next = slider.querySelector('[data-review-slider-next]');
+            const dots = Array.from(slider.querySelectorAll('[data-review-slider-dot]'));
+
+            if (!track || slides.length < 2) {
+                return;
+            }
+
+            const pauseVideos = function () {
+                slider.querySelectorAll('video').forEach(function (video) {
+                    video.pause();
+                });
+            };
+
+            const currentIndex = function () {
+                if (!track.clientWidth) {
+                    return 0;
+                }
+
+                return Math.round(track.scrollLeft / track.clientWidth);
+            };
+
+            const goToSlide = function (index) {
+                const boundedIndex = (index + slides.length) % slides.length;
+                pauseVideos();
+                track.scrollTo({
+                    left: boundedIndex * track.clientWidth,
+                    behavior: 'smooth'
+                });
+                updateDots(boundedIndex);
+            };
+
+            const updateDots = function (activeIndex) {
+                dots.forEach(function (dot, index) {
+                    const isActive = index === activeIndex;
+                    dot.classList.toggle('w-5', isActive);
+                    dot.classList.toggle('bg-white', isActive);
+                    dot.classList.toggle('bg-white/50', !isActive);
+                });
+            };
+
+            previous && previous.addEventListener('click', function () {
+                goToSlide(currentIndex() - 1);
+            });
+
+            next && next.addEventListener('click', function () {
+                goToSlide(currentIndex() + 1);
+            });
+
+            dots.forEach(function (dot) {
+                dot.addEventListener('click', function () {
+                    goToSlide(Number(dot.dataset.reviewSliderDot));
+                });
+            });
+
+            track.addEventListener('scroll', function () {
+                window.requestAnimationFrame(function () {
+                    updateDots(currentIndex());
+                });
+            });
+
+            track.addEventListener('pointerdown', pauseVideos);
+        });
+    });
+</script>
 {% endblock %}
