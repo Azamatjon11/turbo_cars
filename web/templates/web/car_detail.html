@@ -1,5 +1,5 @@
 {% extends 'web/base.html' %}
-{% load static humanize %}
+{% load static humanize web_i18n %}
 
 {% block content %}
 <main class="pt-32 pb-24 bg-slate-50">
@@ -13,7 +13,7 @@
                     <path d="m12 19-7-7 7-7"></path>
                     <path d="M19 12H5"></path>
                 </svg>
-                Back to Listing
+                {{ tr.back_to_listing }}
             </a>
         </div>
 
@@ -38,16 +38,16 @@
                 {% elif car.image %}
                 <img src="{{ car.image.url }}" alt="{{ car.title }}" class="object-cover w-full h-full">
                 {% else %}
-                <div class="w-full h-full flex items-center justify-center text-slate-400">No Image Available</div>
+                <div class="w-full h-full flex items-center justify-center text-slate-400">{{ tr.no_image_available }}</div>
                 {% endif %}
                 <div
                     class="absolute top-4 right-4 bg-white/90 backdrop-blur-sm px-4 py-2 rounded-full text-sm font-semibold text-slate-900 uppercase tracking-wider shadow-sm">
-                    {{ car.condition }}
+                    {{ car.condition|translate_value:tr }}
                 </div>
             </div>
 
             <div class="flex flex-col justify-center">
-                <div class="mb-2 text-red-600 font-medium">{{ car.category }}</div>
+                <div class="mb-2 text-red-600 font-medium">{{ car.category|translate_value:tr }}</div>
                 <h1 class="text-4xl font-bold text-slate-900 mb-4">{{ car.title }}</h1>
                 <div class="flex items-end gap-4 mb-8">
                     <span class="text-4xl font-bold text-slate-900">${{ car.price|floatformat:0|intcomma }}</span>
@@ -64,7 +64,7 @@
                                 <line x1="8" x2="8" y1="2" y2="6"></line>
                                 <line x1="3" x2="21" y1="10" y2="10"></line>
                             </svg>
-                            <span class="text-sm font-medium">Year</span>
+                            <span class="text-sm font-medium">{{ tr.year }}</span>
                         </div>
                         <div class="text-lg font-semibold text-slate-900">{{ car.year }}</div>
                     </div>
@@ -76,7 +76,7 @@
                                 <path d="m12 14 4-4"></path>
                                 <path d="M3.34 19a10 10 0 1 1 17.32 0"></path>
                             </svg>
-                            <span class="text-sm font-medium">Mileage</span>
+                            <span class="text-sm font-medium">{{ tr.mileage }}</span>
                         </div>
                         <div class="text-lg font-semibold text-slate-900">{{ car.display_mileage }}</div>
                     </div>
@@ -92,9 +92,9 @@
                                     d="M14 13h2a2 2 0 0 1 2 2v2a2 2 0 0 0 2 2h0a2 2 0 0 0 2-2V9.83a2 2 0 0 0-.59-1.42L18 5">
                                 </path>
                             </svg>
-                            <span class="text-sm font-medium">Fuel Type</span>
+                            <span class="text-sm font-medium">{{ tr.fuel_type }}</span>
                         </div>
-                        <div class="text-lg font-semibold text-slate-900">{{ car.fuel_type }}</div>
+                        <div class="text-lg font-semibold text-slate-900">{{ car.fuel_type|translate_value:tr }}</div>
                     </div>
                     <div class="p-4 bg-slate-50 rounded-xl">
                         <div class="flex items-center gap-3 text-slate-500 mb-2">
@@ -106,16 +106,16 @@
                                 </path>
                                 <circle cx="7.5" cy="7.5" r=".5" fill="currentColor"></circle>
                             </svg>
-                            <span class="text-sm font-medium">Condition</span>
+                            <span class="text-sm font-medium">{{ tr.condition }}</span>
                         </div>
-                        <div class="text-lg font-semibold text-slate-900">{{ car.condition }}</div>
+                        <div class="text-lg font-semibold text-slate-900">{{ car.condition|translate_value:tr }}</div>
                     </div>
                 </div>
 
                 <div class="flex gap-4">
                     <a href="{% url 'contact' %}"
                         class="flex-1 inline-flex items-center justify-center gap-2 whitespace-nowrap text-sm bg-red-600 hover:bg-red-700 text-white font-semibold h-12 rounded-xl transition-colors">
-                        Contact Seller
+                        {{ tr.contact_seller }}
                     </a>
                 </div>
             </div>

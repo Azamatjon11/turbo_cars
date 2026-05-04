@@ -13,25 +13,24 @@
     <div class="relative max-w-7xl mx-auto px-4 w-full text-center">
         <span
             class="inline-block py-1 px-3 rounded-full bg-red-600/10 border border-red-600/20 text-red-500 text-sm font-semibold mb-6 tracking-wide uppercase backdrop-blur-sm">
-            Global Logistics
+            {{ tr.global_logistics }}
         </span>
         <h1
             class="text-5xl md:text-7xl lg:text-8xl font-black text-white mb-8 uppercase tracking-tight drop-shadow-2xl">
-            From <span class="text-transparent bg-clip-text bg-gradient-to-r from-red-600 to-red-500">Korea</span><br>
-            To <span class="text-white">Europe</span>
+            <span class="text-transparent bg-clip-text bg-gradient-to-r from-red-600 to-red-500">{{ tr.from_korea }}</span><br>
+            <span class="text-white">{{ tr.to_europe }}</span>
         </h1>
         <p class="text-xl md:text-2xl text-slate-300 max-w-3xl mx-auto mb-12 leading-relaxed font-light">
-            Reliable international transport designed for modern enterprises. We assume full responsibility for your
-            cargo.
+            {{ tr.logistics_hero_text }}
         </p>
         <div class="flex flex-col sm:flex-row gap-4 justify-center">
             <a href="{% url 'contact' %}"
                 class="inline-flex items-center justify-center px-8 py-4 text-lg font-bold text-white transition-all duration-200 bg-red-600 border border-transparent rounded-lg hover:bg-red-700 hover:scale-105 shadow-lg shadow-red-600/30">
-                Get a Quote
+                {{ tr.get_quote }}
             </a>
             <a href="#services"
                 class="inline-flex items-center justify-center px-8 py-4 text-lg font-bold text-white transition-all duration-200 bg-white/10 border border-white/20 rounded-lg hover:bg-white/20 backdrop-blur-sm">
-                Explore Services
+                {{ tr.explore_services }}
             </a>
         </div>
     </div>
@@ -42,10 +41,10 @@
     <div class="max-w-7xl mx-auto px-4">
         <div class="text-center mb-20">
             <h2 class="text-4xl md:text-5xl font-black text-slate-900 mb-6 tracking-tight">
-                Logistics for <span class="text-red-600">Serious Business</span>
+                {{ tr.logistics_business }}
             </h2>
             <p class="text-xl text-slate-600 max-w-3xl mx-auto">
-                We move the goods that keep global business flowing. Specialized in automotive logistics.
+                {{ tr.logistics_business_text }}
             </p>
         </div>
 
@@ -74,10 +73,9 @@
                     </div>
                     <h3
                         class="text-2xl font-bold text-slate-900 mb-4 bg-white/80 backdrop-blur-sm p-2 rounded-lg inline-block self-start">
-                        Auto Details & Parts</h3>
+                        {{ tr.auto_parts }}</h3>
                     <p class="text-slate-600 leading-relaxed mb-6 flex-1">
-                        Secure packaging and transport for sensitive automotive components. From engines to body kits,
-                        we handle it with care.
+                        {{ tr.auto_parts_text }}
                     </p>
                 </div>
             </div>
@@ -104,10 +102,9 @@
                     </div>
                     <h3
                         class="text-2xl font-bold text-slate-900 mb-4 bg-white/80 backdrop-blur-sm p-2 rounded-lg inline-block self-start">
-                        Full Vehicle Shipping</h3>
+                        {{ tr.vehicle_shipping }}</h3>
                     <p class="text-slate-600 leading-relaxed mb-6 flex-1">
-                        Professional handling of full vehicles. Container loading, securing, and documentation for
-                        smooth export from Korea.
+                        {{ tr.vehicle_shipping_text }}
                     </p>
                 </div>
             </div>
@@ -134,10 +131,9 @@
                     </div>
                     <h3
                         class="text-2xl font-bold text-slate-900 mb-4 bg-white/80 backdrop-blur-sm p-2 rounded-lg inline-block self-start">
-                        B2B Logistics</h3>
+                        {{ tr.b2b_logistics }}</h3>
                     <p class="text-slate-600 leading-relaxed mb-6 flex-1">
-                        Tailored solutions for businesses. We deliver what your business needs, ensuring reliable supply
-                        chain continuity.
+                        {{ tr.b2b_logistics_text }}
                     </p>
                 </div>
             </div>
@@ -155,11 +151,10 @@
 
     <div class="relative max-w-5xl mx-auto px-4 text-center">
         <h2 class="text-4xl md:text-6xl font-black text-white mb-8 tracking-tighter">
-            Your Cargo. Our <span class="text-red-600 italic">Turbo</span>.
+            {{ tr.cargo_turbo }}
         </h2>
         <p class="text-xl text-slate-400 mb-12 max-w-2xl mx-auto">
-            Experience the speed and reliability of Turbo Express. Contact us today for a personalized shipping
-            strategy.
+            {{ tr.cargo_text }}
         </p>
 
         <div class="bg-white/5 backdrop-blur-md rounded-2xl p-8 border border-white/10 max-w-3xl mx-auto">
@@ -172,7 +167,7 @@
                                     d="M5 13l4 4L19 7"></path>
                             </svg>
                         </div>
-                        <span class="font-medium">Direct B2B Logistics</span>
+                        <span class="font-medium">{{ tr.direct_b2b }}</span>
                     </div>
                     <div class="flex items-center gap-3 text-slate-300">
                         <div class="w-8 h-8 rounded-full bg-red-600/20 flex items-center justify-center text-red-500">
@@ -181,7 +176,7 @@
                                     d="M5 13l4 4L19 7"></path>
                             </svg>
                         </div>
-                        <span class="font-medium">Secure & Insured</span>
+                        <span class="font-medium">{{ tr.secure_insured }}</span>
                     </div>
                     <div class="flex items-center gap-3 text-slate-300">
                         <div class="w-8 h-8 rounded-full bg-red-600/20 flex items-center justify-center text-red-500">
@@ -190,15 +185,15 @@
                                     d="M5 13l4 4L19 7"></path>
                             </svg>
                         </div>
-                        <span class="font-medium">Real-time Tracking</span>
+                        <span class="font-medium">{{ tr.real_time_tracking }}</span>
                     </div>
                 </div>
                 <div>
                     <a href="{% url 'contact' %}"
                         class="block w-full py-4 px-8 bg-red-600 hover:bg-red-700 text-white font-bold rounded-xl transition-all hover:scale-105 shadow-xl shadow-red-900/20">
-                        Start Shipping Now
+                        {{ tr.start_shipping }}
                     </a>
-                    <p class="text-slate-500 text-sm mt-4">Response within 24 hours</p>
+                    <p class="text-slate-500 text-sm mt-4">{{ tr.response_24 }}</p>
                 </div>
             </div>
         </div>

@@ -5,8 +5,8 @@
 <main class="pt-32 pb-24 bg-slate-50">
     <div class="max-w-7xl mx-auto px-4">
         <div class="mb-12 text-center">
-            <h1 class="text-4xl font-bold text-slate-900 mb-4">Customer Reviews</h1>
-            <p class="text-slate-600">See what our customers have to say about their experience.</p>
+            <h1 class="text-4xl font-bold text-slate-900 mb-4">{{ tr.customer_reviews }}</h1>
+            <p class="text-slate-600">{{ tr.reviews_intro }}</p>
         </div>
 
         <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
@@ -44,7 +44,7 @@
                             </div>
                             <div>
                                 <h4 class="font-semibold text-slate-900">{{ review.author_name }}</h4>
-                                <p class="text-sm text-slate-500">Purchased: {{ review.vehicle_purchased }}</p>
+                                <p class="text-sm text-slate-500">{{ tr.purchased }}: {{ review.vehicle_purchased }}</p>
                                 <p class="text-xs text-slate-400">{{ review.location }}</p>
                             </div>
                         </div>

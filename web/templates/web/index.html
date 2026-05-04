@@ -1,5 +1,5 @@
 {% extends 'web/base.html' %}
-{% load static humanize %}
+{% load static humanize web_i18n %}
 
 {% block content %}
 <main>
@@ -16,16 +16,14 @@
           <div style="opacity: 1; transform: none;">
             <div class="inline-flex items-center gap-2 bg-white/10 backdrop-blur-sm rounded-full px-4 py-2 mb-8">
               <span class="w-2 h-2 bg-red-500 rounded-full animate-pulse"></span><span
-                class="text-sm text-slate-300">Trusted by 10,000+ customers worldwide</span>
+                class="text-sm text-slate-300">{{ tr.trusted_badge }}</span>
             </div>
             <h1 class="text-5xl md:text-7xl font-bold text-white leading-tight mb-6">Turbo Cars<span
-                class="block text-transparent bg-clip-text bg-gradient-to-r from-red-500 to-red-700">Your Dream is
-                already in motion</span></h1>
-            <p class="text-xl text-slate-400 mb-10 max-w-lg">From Korea to your driveway - premium cars without
-              compromise.</p>
+                class="block text-transparent bg-clip-text bg-gradient-to-r from-red-500 to-red-700">{{ tr.hero_line }}</span></h1>
+            <p class="text-xl text-slate-400 mb-10 max-w-lg">{{ tr.hero_intro }}</p>
             <div class="flex flex-col sm:flex-row gap-4"><a href="/CarsInStock"><button
                   class="inline-flex items-center justify-center gap-2 whitespace-nowrap text-sm transition-colors focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-ring disabled:pointer-events-none disabled:opacity-50 [&amp;_svg]:pointer-events-none [&amp;_svg]:size-4 [&amp;_svg]:shrink-0 shadow bg-red-600 hover:bg-red-700 text-white font-semibold px-8 h-14 rounded-xl">Browse
-                  Inventory<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"
+                  {{ tr.browse_inventory }}<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"
                     fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
                     class="lucide lucide-arrow-right ml-2 w-5 h-5">
                     <path d="M5 12h14"></path>
@@ -36,19 +34,19 @@
                     stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
                     class="lucide lucide-play mr-2 w-5 h-5">
                     <polygon points="6 3 20 12 6 21 6 3"></polygon>
-                  </svg>View Auctions</button></a></div>
+                  </svg>{{ tr.view_auctions }}</button></a></div>
             <div class="grid grid-cols-3 gap-8 mt-16 pt-8 border-t border-slate-800">
               <div>
                 <div class="text-3xl font-bold text-white">500+</div>
-                <div class="text-slate-500">Cars in Stock</div>
+                <div class="text-slate-500">{{ tr.cars_in_stock }}</div>
               </div>
               <div>
                 <div class="text-3xl font-bold text-white">98%</div>
-                <div class="text-slate-500">Happy Clients</div>
+                <div class="text-slate-500">{{ tr.happy_clients }}</div>
               </div>
               <div>
                 <div class="text-3xl font-bold text-white">15+</div>
-                <div class="text-slate-500">Years Experience</div>
+                <div class="text-slate-500">{{ tr.years_experience }}</div>
               </div>
             </div>
           </div>
@@ -64,9 +62,8 @@
     </div>
     <section class="py-24 bg-white">
       <div class="max-w-7xl mx-auto px-4">
-        <div class="text-center mb-16"><span class="text-red-600 font-semibold text-sm tracking-wider uppercase">Why
-            Choose Us</span>
-          <h2 class="text-4xl md:text-5xl font-bold text-slate-900 mt-2">Premium Services</h2>
+        <div class="text-center mb-16"><span class="text-red-600 font-semibold text-sm tracking-wider uppercase">{{ tr.why_choose_us }}</span>
+          <h2 class="text-4xl md:text-5xl font-bold text-slate-900 mt-2">{{ tr.premium_services }}</h2>
         </div>
         <div class="grid md:grid-cols-2 lg:grid-cols-4 gap-8">
           <div class="group p-8 rounded-2xl bg-slate-50 hover:bg-slate-900 transition-all duration-500">
@@ -79,8 +76,8 @@
               </svg>
             </div>
             <h3 class="text-xl font-semibold text-slate-900 group-hover:text-white mb-3 transition-colors">
-              Full Inspection</h3>
-            <p class="text-slate-600 group-hover:text-slate-400 transition-colors">Every vehicle undergoes a rigorous 200-point inspection to ensure unparalleled quality and safety.</p>
+              {{ tr.full_inspection }}</h3>
+            <p class="text-slate-600 group-hover:text-slate-400 transition-colors">{{ tr.full_inspection_text }}</p>
           </div>
           <div class="group p-8 rounded-2xl bg-slate-50 hover:bg-slate-900 transition-all duration-500">
             <div
@@ -92,8 +89,8 @@
               </svg>
             </div>
             <h3 class="text-xl font-semibold text-slate-900 group-hover:text-white mb-3 transition-colors">
-              Real Photos & Videos</h3>
-            <p class="text-slate-600 group-hover:text-slate-400 transition-colors">We provide high-definition images and detailed video walk-throughs for complete transparency.</p>
+              {{ tr.real_photos }}</h3>
+            <p class="text-slate-600 group-hover:text-slate-400 transition-colors">{{ tr.real_photos_text }}</p>
           </div>
           <div class="group p-8 rounded-2xl bg-slate-50 hover:bg-slate-900 transition-all duration-500">
             <div
@@ -105,8 +102,8 @@
               </svg>
             </div>
             <h3 class="text-xl font-semibold text-slate-900 group-hover:text-white mb-3 transition-colors">
-              Direct from Korea</h3>
-            <p class="text-slate-600 group-hover:text-slate-400 transition-colors">Skip the middlemen with our direct import logistics straight from South Korea to your location.</p>
+              {{ tr.direct_from_korea }}</h3>
+            <p class="text-slate-600 group-hover:text-slate-400 transition-colors">{{ tr.direct_from_korea_text }}</p>
           </div>
           <div class="group p-8 rounded-2xl bg-slate-50 hover:bg-slate-900 transition-all duration-500">
             <div
@@ -118,8 +115,8 @@
               </svg>
             </div>
             <h3 class="text-xl font-semibold text-slate-900 group-hover:text-white mb-3 transition-colors">
-              Best Price Guarantee</h3>
-            <p class="text-slate-600 group-hover:text-slate-400 transition-colors">We offer unbeatable prices and complete pricing transparency with absolutely no hidden fees.</p>
+              {{ tr.best_price }}</h3>
+            <p class="text-slate-600 group-hover:text-slate-400 transition-colors">{{ tr.best_price_text }}</p>
           </div>
         </div>
       </div>
@@ -127,11 +124,10 @@
     <section class="py-24 bg-slate-50">
       <div class="max-w-7xl mx-auto px-4">
         <div class="flex flex-col md:flex-row md:items-end md:justify-between mb-12">
-          <div><span class="text-red-600 font-semibold text-sm tracking-wider uppercase">Featured Vehicles</span>
-            <h2 class="text-4xl md:text-5xl font-bold text-slate-900 mt-2">Cars in Stock</h2>
+          <div><span class="text-red-600 font-semibold text-sm tracking-wider uppercase">{{ tr.featured_vehicles }}</span>
+            <h2 class="text-4xl md:text-5xl font-bold text-slate-900 mt-2">{{ tr.cars_in_stock }}</h2>
           </div><a href="/CarsInStock"><button
-              class="inline-flex items-center justify-center gap-2 whitespace-nowrap rounded-md text-sm font-medium transition-colors focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-ring disabled:pointer-events-none disabled:opacity-50 [&amp;_svg]:pointer-events-none [&amp;_svg]:size-4 [&amp;_svg]:shrink-0 hover:bg-accent h-9 px-4 py-2 mt-4 md:mt-0 text-slate-600 hover:text-slate-900">View
-              All Cars<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none"
+              class="inline-flex items-center justify-center gap-2 whitespace-nowrap rounded-md text-sm font-medium transition-colors focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-ring disabled:pointer-events-none disabled:opacity-50 [&amp;_svg]:pointer-events-none [&amp;_svg]:size-4 [&amp;_svg]:shrink-0 hover:bg-accent h-9 px-4 py-2 mt-4 md:mt-0 text-slate-600 hover:text-slate-900">{{ tr.view_all_cars }}<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none"
                 stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
                 class="lucide lucide-arrow-right ml-2 w-4 h-4">
                 <path d="M5 12h14"></path>
@@ -164,12 +160,12 @@
                 <img src="{{ car.image.url }}" alt="{{ car.title }}"
                   class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700">
                 {% else %}
-                <div class="w-full h-full bg-slate-200 flex items-center justify-center text-slate-400">No Image</div>
+                <div class="w-full h-full bg-slate-200 flex items-center justify-center text-slate-400">{{ tr.no_image }}</div>
                 {% endif %}
                 <div class="absolute top-4 left-4 flex gap-2 pointer-events-none">
                   <div
                     class="inline-flex items-center rounded-md text-xs font-semibold transition-colors focus:outline-none focus:ring-2 focus:ring-ring focus:ring-offset-2 border-transparent shadow hover:bg-primary/80 {% if car.condition == 'Damaged' %}bg-orange-500{% else %}bg-emerald-500{% endif %} text-white border-0 px-3 py-1">
-                    {{ car.condition }}</div>
+                    {{ car.condition|translate_value:tr }}</div>
                 </div>
               </div>
               <div class="p-6">
@@ -192,14 +188,14 @@
                       <path d="M14 22V4a2 2 0 0 0-2-2H6a2 2 0 0 0-2 2v18"></path>
                       <path d="M14 13h2a2 2 0 0 1 2 2v2a2 2 0 0 0 2 2a2 2 0 0 0 2-2V9.83a2 2 0 0 0-.59-1.42L18 5">
                       </path>
-                    </svg><span>{{ car.fuel_type }}</span></div>
+                    </svg><span>{{ car.fuel_type|translate_value:tr }}</span></div>
                 </div>
                 <div class="mb-4">
                   <span class="text-2xl font-bold text-slate-900">${{ car.price|floatformat:0|intcomma }}</span>
                 </div>
                 <a href="{% url 'car_detail' car.pk %}"
                   class="inline-flex items-center justify-center gap-2 whitespace-nowrap rounded-md text-sm font-medium focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-ring disabled:pointer-events-none disabled:opacity-50 [&amp;_svg]:pointer-events-none [&amp;_svg]:size-4 [&amp;_svg]:shrink-0 h-9 px-4 py-2 w-full group/btn hover:bg-slate-900 hover:text-white transition-all duration-300">View
-                  Details<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none"
+                  {{ tr.view_details }}<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none"
                     stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
                     class="lucide lucide-arrow-right w-4 h-4 ml-2 group-hover/btn:translate-x-1 transition-transform">
                     <path d="M5 12h14"></path>
@@ -215,11 +211,10 @@
     <section class="py-24 bg-slate-50">
       <div class="max-w-7xl mx-auto px-4">
         <div class="flex flex-col md:flex-row md:items-end md:justify-between mb-12">
-          <div><span class="text-red-600 font-semibold text-sm tracking-wider uppercase">Testimonials</span>
-            <h2 class="text-4xl md:text-5xl font-bold text-slate-900 mt-2">What Our Customers Say</h2>
+          <div><span class="text-red-600 font-semibold text-sm tracking-wider uppercase">{{ tr.testimonials }}</span>
+            <h2 class="text-4xl md:text-5xl font-bold text-slate-900 mt-2">{{ tr.what_customers_say }}</h2>
           </div><a href="/Reviews"><button
-              class="inline-flex items-center justify-center gap-2 whitespace-nowrap rounded-md text-sm font-medium transition-colors focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-ring disabled:pointer-events-none disabled:opacity-50 [&amp;_svg]:pointer-events-none [&amp;_svg]:size-4 [&amp;_svg]:shrink-0 hover:bg-accent h-9 px-4 py-2 mt-4 md:mt-0 text-slate-600 hover:text-slate-900">All
-              Reviews<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none"
+              class="inline-flex items-center justify-center gap-2 whitespace-nowrap rounded-md text-sm font-medium transition-colors focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-ring disabled:pointer-events-none disabled:opacity-50 [&amp;_svg]:pointer-events-none [&amp;_svg]:size-4 [&amp;_svg]:shrink-0 hover:bg-accent h-9 px-4 py-2 mt-4 md:mt-0 text-slate-600 hover:text-slate-900">{{ tr.all_reviews }}<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none"
                 stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
                 class="lucide lucide-arrow-right ml-2 w-4 h-4">
                 <path d="M5 12h14"></path>
@@ -259,7 +254,7 @@
                     {{ review.author_name|slice:":1" }}</div>
                   <div>
                     <h4 class="font-semibold text-slate-900">{{ review.author_name }}</h4>
-                    <p class="text-sm text-slate-500">Purchased: {{ review.vehicle_purchased }}</p>
+                    <p class="text-sm text-slate-500">{{ tr.purchased }}: {{ review.vehicle_purchased }}</p>
                     <p class="text-xs text-slate-400">{{ review.location }}</p>
                   </div>
                 </div>
@@ -277,19 +272,18 @@
       </div>
       <div class="relative max-w-4xl mx-auto px-4 text-center">
         <div>
-          <h2 class="text-4xl md:text-5xl font-bold text-white mb-6">Ready to Find Your Perfect Car?</h2>
-          <p class="text-xl text-slate-400 mb-10">Browse our extensive inventory or contact us for personalized
-            assistance.</p>
+          <h2 class="text-4xl md:text-5xl font-bold text-white mb-6">{{ tr.ready_title }}</h2>
+          <p class="text-xl text-slate-400 mb-10">{{ tr.ready_text }}</p>
           <div class="flex flex-col sm:flex-row gap-4 justify-center"><a href="/CarsInStock"><button
                 class="inline-flex items-center justify-center gap-2 whitespace-nowrap text-sm transition-colors focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-ring disabled:pointer-events-none disabled:opacity-50 [&amp;_svg]:pointer-events-none [&amp;_svg]:size-4 [&amp;_svg]:shrink-0 shadow bg-red-600 hover:bg-red-700 text-white font-semibold px-8 h-14 rounded-xl">Browse
-                Cars<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none"
+                {{ tr.browse_cars }}<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none"
                   stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
                   class="lucide lucide-arrow-right ml-2 w-5 h-5">
                   <path d="M5 12h14"></path>
                   <path d="m12 5 7 7-7 7"></path>
                 </svg></button></a><a href="/ContactUs"><button
                 class="inline-flex items-center justify-center gap-2 whitespace-nowrap text-sm font-medium transition-colors focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-ring disabled:pointer-events-none disabled:opacity-50 [&amp;_svg]:pointer-events-none [&amp;_svg]:size-4 [&amp;_svg]:shrink-0 border bg-slate-950 shadow-sm hover:text-accent-foreground border-slate-600 text-white hover:bg-slate-800 h-14 rounded-xl px-8">Contact
-                Us</button></a></div>
+                {{ tr.contact_us }}</button></a></div>
         </div>
       </div>
     </section>

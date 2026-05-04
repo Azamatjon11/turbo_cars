@@ -1,6 +1,24 @@
 from django.shortcuts import render, redirect
 from django.contrib import messages
+from django.utils.http import url_has_allowed_host_and_scheme
 from .models import Car, Review, ContactMessage, TeamMember
+from .translations import TRANSLATIONS, get_language
+
+def translated(request, key):
+    return TRANSLATIONS[get_language(request)][key]
+
+def set_language(request, language):
+    if language in TRANSLATIONS:
+        request.session['language'] = language
+
+    next_url = request.GET.get('next') or ''
+    if not url_has_allowed_host_and_scheme(next_url, allowed_hosts={request.get_host()}):
+        next_url = 'index'
+
+    response = redirect(next_url)
+    if language in TRANSLATIONS:
+        response.set_cookie('language', language, max_age=60 * 60 * 24 * 365)
+    return response
 
 def index(request):
     featured_cars = Car.objects.filter(category='Stock').order_by('-created_at')[:6]
@@ -23,29 +41,29 @@ def contact(request):
             email=email,
             message=message
         )
-        messages.success(request, 'Your message has been sent successfully!')
+        messages.success(request, translated(request, 'message_sent'))
         return redirect('contact')
         
     return render(request, 'web/contact.html')
 
 def cars_in_stock(request):
     cars = Car.objects.filter(category='Stock').order_by('-created_at')
-    return render(request, 'web/cars_in_stock.html', {'cars': cars, 'title': 'All Inventory'})
+    return render(request, 'web/cars_in_stock.html', {'cars': cars, 'title': translated(request, 'all_inventory')})
 
 def new_cars(request):
     cars = Car.objects.filter(category='Stock', condition='New').order_by('-created_at')
-    return render(request, 'web/cars_in_stock.html', {'cars': cars, 'title': 'New Cars'})
+    return render(request, 'web/cars_in_stock.html', {'cars': cars, 'title': translated(request, 'new_cars')})
 
 def used_cars(request):
     cars = Car.objects.filter(category='Stock', condition='Used').order_by('-created_at')
-    return render(request, 'web/cars_in_stock.html', {'cars': cars, 'title': 'Used Cars'})
+    return render(request, 'web/cars_in_stock.html', {'cars': cars, 'title': translated(request, 'used_cars')})
 
 def damaged_cars(request):
     cars = Car.objects.filter(category='Stock', condition='Damaged').order_by('-created_at')
-    return render(request, 'web/cars_in_stock.html', {'cars': cars, 'title': 'Damaged Cars'})
+    return render(request, 'web/cars_in_stock.html', {'cars': cars, 'title': translated(request, 'damaged_cars')})
 
 def auctions(request):
-    return render(request, 'web/simple_page.html', {'title': 'Car Auctions', 'content': 'Access exclusive car auctions directly from our platform. Coming soon.'})
+    return render(request, 'web/simple_page.html', {'title': translated(request, 'car_auctions'), 'content': translated(request, 'auctions_coming_soon')})
 
 def logistics(request):
     return render(request, 'web/logistics.html')
