@@ -62,8 +62,8 @@ def damaged_cars(request):
     cars = Car.objects.filter(category='Stock', condition='Damaged').order_by('-created_at')
     return render(request, 'web/cars_in_stock.html', {'cars': cars, 'title': translated(request, 'damaged_cars')})
 
-def auctions(request):
-    return render(request, 'web/simple_page.html', {'title': translated(request, 'car_auctions'), 'content': translated(request, 'auctions_coming_soon')})
+def how_it_works(request):
+    return render(request, 'web/how_it_works.html')
 
 def logistics(request):
     return render(request, 'web/logistics.html')

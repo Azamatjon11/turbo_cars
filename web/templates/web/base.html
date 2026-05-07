@@ -76,8 +76,8 @@
                 </div>
                 <a href="{% url 'about' %}"
                     class="px-4 py-2 rounded-md text-sm font-medium transition-colors text-slate-600 hover:text-slate-900 hover:bg-slate-100">{{ tr.about_us }}</a>
-                <a href="{% url 'auctions' %}"
-                    class="px-4 py-2 rounded-md text-sm font-medium transition-colors text-slate-600 hover:text-slate-900 hover:bg-slate-100">{{ tr.auctions }}</a>
+                <a href="{% url 'how_it_works' %}"
+                    class="px-4 py-2 rounded-md text-sm font-medium transition-colors {% if request.resolver_match.url_name == 'how_it_works' %}bg-slate-100 text-slate-900{% else %}text-slate-600 hover:text-slate-900 hover:bg-slate-100{% endif %}">{{ tr.how_it_works }}</a>
                 <a href="{% url 'logistics' %}"
                     class="px-4 py-2 rounded-md text-sm font-medium transition-colors text-slate-600 hover:text-slate-900 hover:bg-slate-100">{{ tr.logistics }}</a>
                 <a href="{% url 'reviews' %}"
@@ -191,9 +191,9 @@
                         <span
                             class="h-1.5 w-1.5 rounded-full bg-red-600 opacity-0 transition-opacity group-hover:opacity-100"></span>
                     </a>
-                    <a href="{% url 'auctions' %}"
-                        class="group flex items-center justify-between rounded-xl px-4 py-3.5 text-base font-semibold text-slate-700 transition-colors hover:bg-slate-50 hover:text-slate-950">
-                        <span>{{ tr.auctions }}</span>
+                    <a href="{% url 'how_it_works' %}"
+                        class="group flex items-center justify-between rounded-xl px-4 py-3.5 text-base font-semibold transition-colors {% if request.resolver_match.url_name == 'how_it_works' %}bg-slate-100 text-slate-950{% else %}text-slate-700 hover:bg-slate-50 hover:text-slate-950{% endif %}">
+                        <span>{{ tr.how_it_works }}</span>
                         <span
                             class="h-1.5 w-1.5 rounded-full bg-red-600 opacity-0 transition-opacity group-hover:opacity-100"></span>
                     </a>
@@ -241,7 +241,7 @@
                         <li><a href="{% url 'cars_in_stock' %}"
                                 class="text-slate-400 hover:text-white transition-colors">{{ tr.cars_in_stock }}</a>
                         </li>
-                        <li><a href="{% url 'auctions' %}" class="text-slate-400 hover:text-white transition-colors">{{ tr.auctions }}</a></li>
+                        <li><a href="{% url 'how_it_works' %}" class="text-slate-400 hover:text-white transition-colors">{{ tr.how_it_works }}</a></li>
                         <li><a href="{% url 'logistics' %}" class="text-slate-400 hover:text-white transition-colors">{{ tr.logistics }}</a></li>
                         <li><a href="{% url 'about' %}" class="text-slate-400 hover:text-white transition-colors">{{ tr.about_us }}</a></li>
                     </ul>
